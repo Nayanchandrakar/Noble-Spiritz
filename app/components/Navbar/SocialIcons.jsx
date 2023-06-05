@@ -15,7 +15,9 @@ const socialIcons = [
     { background:null,icon:AiOutlineSearch},
 ]
 
-const SocialIcons = () => {
+const SocialIcons = ({
+    isSearch
+}) => {
     return(
         <div 
             className="
@@ -25,25 +27,49 @@ const SocialIcons = () => {
         ">
 
         {socialIcons?.map((e,index) => {
-            return(
-                <>
-                <span 
-                    key={index}
-                    className={`
-                        rounded-full
-                        w-fit
-                        h-fit
-                        p-1
-                      ${e?.background}
-                    `}>
-                <e.icon
-                    key={index + 34}
-                    width={20}
-                    height={20}
-                    color={e?.background == null ? 'gray' : 'white'}
-                />
-                </span>
-           </>)
+            if (e?.icon == AiOutlineSearch && isSearch) {
+                return(
+                    <>
+                    <span 
+                        key={index}
+                        className={`
+                            rounded-full
+                            w-fit
+                            h-fit
+                            p-1
+                            cursor-pointer
+                          ${e?.background}
+                        `}>
+                     <e.icon
+                        key={index + 34}
+                        width={20}
+                        height={20}
+                        color={e?.background == null ? 'gray' : 'white'}
+                    />
+                    </span>
+               </>)
+            }else if (e?.icon !== AiOutlineSearch) {
+                return(
+                    <>
+                    <span 
+                        key={index}
+                        className={`
+                            rounded-full
+                            w-fit
+                            h-fit
+                            p-1
+                            cursor-pointer
+                          ${e?.background}
+                        `}>
+                     <e.icon
+                        key={index + 34}
+                        width={20}
+                        height={20}
+                        color={e?.background == null ? 'gray' : 'white'}
+                    />
+                    </span>
+               </>)
+            }
         })}
     </div>
     )

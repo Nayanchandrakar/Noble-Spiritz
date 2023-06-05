@@ -41,7 +41,7 @@ console.log('rerender from navbar')
                             handleClick={handleClick}
                         />
                         <Navigation/>
-                        <SocialIcons/>
+                        <SocialIcons isSearch />
                         <Minimenu 
                            isOpen={isOpen} 
                            handleClick={handleClick} 
