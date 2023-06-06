@@ -1,5 +1,8 @@
 'use client'
 import Image from 'next/image'
+import Vision from './components/Vision/Vision'
+import PeopleBarrier from './components/Barriers/PeopleBarrier'
+import Approach from './components/Approach/Approach'
 
 const Home = () => {
     return(
@@ -23,6 +26,10 @@ const Home = () => {
           />
 
         </div>
+
+        <Vision/>
+        <Approach/>
+        <PeopleBarrier/>
       </section>
     )
 }
