@@ -1,9 +1,89 @@
-'use client'
-
+import Tilt from "react-parallax-tilt"
+import { motion } from "framer-motion"
+import { fadeIn  } from "@utils/Motion"
+import  MotionWrapper   from "../../Hoc/MotionWrapper"
 import Image from "next/image"
 import Container from "../Container"
 
+
+const TiltComponent = ({ 
+    index, 
+    heading, 
+    image,
+    para, 
+}) => {
+    return (
+        <motion.div 
+        variants={fadeIn("right", "spring", index * 0.5, 0.75)}
+        >
+            
+            <Tilt
+                key={`mainkey234${index}`}
+                perspective={500}
+                className="
+                flex 
+                justify-center 
+                items-center  
+                flex-col 
+                overflow-x-hidden 
+                parallax-effect
+                ">
+                <div
+                    options={{
+                        max: 45,
+                        scale: 1,
+                        speed: 450,
+                    }}
+                    className="
+                    inner-element 
+                    h-[18rem] 
+                    w-full 
+                    rounded-xl 
+                    bg-white/[.2]
+                    backdrop-blur-xs
+                    flex 
+                    flex-col 
+                    items-center 
+                    justify-center
+                    border-[2px]
+                    border-black/[.1]
+                    ">
+                    <Image
+                        src={image}
+                        className="
+                        w-[7rem] 
+                        bg-transparent
+                        "
+                        alt="no_image"
+                        width={40}
+                        height={40}
+                        sizes="100"
+                    />
+                    <h1 
+                    className="
+                    text-base 
+                    bg-transparent
+                    ">
+                        {heading}
+                    </h1>
+                    <p 
+                    className="
+                    text-xs
+                    text-gray-500
+                    text-center
+                    px-2
+                    pt-2
+                    ">
+                        {para}
+                    </p>
+                </div>
+            </Tilt>
+        </motion.div>
+    )
+}
+
 const Vision = () => {
+
 
     const VisionContent = [
         { heading:'Vision' ,  image: '/Vision/vision.png' , para:'To Empower people with Barriers' },
@@ -16,60 +96,48 @@ const Vision = () => {
 
     ]
 
-    return(
-        <Container>
+
+    return (<>
         <div 
-         className="
-            grid
-            gap-4
-            grid-cols-1
-            sm:grid-cols-2
-            md:grid-cols-3
-            lg:grid-cols-4
+        className="
+         mt-[6rem]
+         relative
         ">
-            {VisionContent?.map((elem,index) => {
-                return(
-                    <>
-                    <div 
-                        key={index + 34234}
-                        className="
-                            flex
-                            flex-col
-                            gap-1
-                            mt-10
-                            items-center
-                    ">
-                            <span 
-                            className="
-                                text-4xl
-                                uppercase
-                                font-bold
-                                text-black
-                            ">
-                                {elem?.heading}
-                            </span>
-
-                            <Image
-                                alt="Local_image"
-                                width={250}
-                                height={250}
-                                src={elem?.image}
-                            />
-                            <p 
-                            className="
-                            text-md
-                            mt-3
-                            text-gray-700
-                            ">
-                                {elem?.para}
-                            </p>
-
+            <Image
+                alt="tailwind"
+                src="https://tailwindui.com/img/beams-home@95.jpg"
+                width={20}
+                height={20}
+                sizes='100'
+                className="
+                    w-full
+                    h-full
+                    absolute
+                "
+            />
+            <Container>
+            <div 
+            className="
+                grid 
+                grid-cols-1 
+                sm:grid-cols-2 
+                lg:grid-cols-4 
+                mt-[4rem] 
+                gap-6
+            ">
+                {VisionContent?.map((elem, index) => {
+                    return (
+                        <TiltComponent
+                            key={`Newjj-${index}`}
+                            {...elem}
+                            index={index}
+                        />
+                    )
+                })}
             </div>
-                    </>
-                )
-            })}
+            </Container>
         </div>
-        </Container>
-    )
+    </>)
 }
-export default Vision
+
+export default MotionWrapper(Vision, "")

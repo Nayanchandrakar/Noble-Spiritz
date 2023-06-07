@@ -24,8 +24,10 @@ console.log('rerender from navbar')
                 border-b-[1px]
                 sticky
                 inset-0
-                shadow-sm
-                bg-white
+                shadow-black/[.1]
+                shadow-lg
+                z-[3]
+                bg-[#f5faff]
             ">
                 <Container>
                 <nav 

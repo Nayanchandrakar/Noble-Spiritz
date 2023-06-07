@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Vision from './components/Vision/Vision'
 import PeopleBarrier from './components/Barriers/PeopleBarrier'
 import Approach from './components/Approach/Approach'
+import Contact from './components/Contact/Contact'
 
 const Home = () => {
     return(
@@ -10,6 +11,7 @@ const Home = () => {
         <div
           className='
             w-full
+            h-full
           '
         >
             <Image
@@ -24,12 +26,13 @@ const Home = () => {
               height={100}
               alt='hero-image'
           />
-
+     
         </div>
 
         <Vision/>
         <Approach/>
         <PeopleBarrier/>
+        <Contact/>
       </section>
     )
 }

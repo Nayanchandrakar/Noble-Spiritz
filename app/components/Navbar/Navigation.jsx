@@ -7,7 +7,7 @@ const Navigation = () => {
 
     const toogleLinks = [
         {field:'Social-Mission', href:"/"},
-        {field:'Digital Platforms', href:"/Digital Platforms"},
+        {field:'Digital Platforms', href:"/Platform"},
         {field:'About us', href:"/about"},
         {field:'Ecosystem Partners', href:"/ecosysystem_partners"},
         {field:'Pricing', href:"/pricing"},
@@ -53,7 +53,7 @@ const Navigation = () => {
                             text-xs
                             font-medium
                         "
-                        href={'/'}
+                        href={elem?.href}
                     >
                         {elem?.field}
                     </Link>

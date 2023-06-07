@@ -7,354 +7,85 @@ import {HiLocationMarker} from 'react-icons/hi'
 import {BsClock} from 'react-icons/bs'
 import Image from 'next/image';
 import MiniFooter from './MiniFooter';
+import SocialIcons from '../Navbar/SocialIcons';
 
 
 const Footer = () => {
 
 
-    const iconColors = '#edd155'
-
-    const container1 = [
-            {heading:'USA(TEXAS)'},
-            {placeholder:'+1 (908) 878-3691', icon:IoMdCall , href:'/'},
-            {placeholder:'sai.kotla@dignityofnoble.org', icon:MdEmail , href:'/'},
-            {placeholder:'13686 Gabriel DR, Frisco, TX 75035', icon:HiLocationMarker , href:'/'},
-            {placeholder:'Mon – Fri: 10am – 6pm CST', icon:BsClock , href:'/'},
-    ]
-
-    const container2 = [
-            {heading:'UK'},
-            {placeholder:'+44 7986 991640', icon:IoMdCall , href:'/'},
-            {placeholder:'sai.kotla@dignityofnoble.org', icon:MdEmail , href:'/'},
-            {placeholder:'71-75, Shelton Street, Covent Garden, London, WC2H 9JQ, England', icon:HiLocationMarker , href:'/'},
-            {placeholder:'Mon – Fri: 10am – 6pm', icon:BsClock , href:'/'},
-    ]
-
-    const container3 = [
-        {heading:'INDIA'},
-        {placeholder:'+91 9866614909', icon:IoMdCall , href:'/'},
-        {placeholder:'sai.kotla@dignityofnoble.org', icon:MdEmail , href:'/'},
-        {placeholder:'Flat 313, Vijaya Towers, Kamma Sangham Lane, Ameerpet, Hyderabad – 500038', icon:HiLocationMarker , href:'/'},
-        {placeholder:'Mon – Fri: 10am – 6pm CST', icon:BsClock , href:'/'},
-    ]
-    
-    const container4 = [
-        {heading:'USA(CALIFORNIA)'},
-        {placeholder:'+1 (908) 878-3691', icon:IoMdCall , href:'/'},
-        {placeholder:'sai.kotla@dignityofnoble.org', icon:MdEmail , href:'/'},
-        {placeholder:'6420 Stoneridge Mall Rd, Pleasanton, CA 94588, United States', icon:HiLocationMarker , href:'/'},
-        {placeholder:'Mon – Fri: 10am – 6pm CST', icon:BsClock , href:'/'},
-    ]
-
-
     return (
-       <footer
-        className="
-            mt-6
-            overflow-hidden
-        "
-       >
+        <footer className="bg-gradient-to-r from-gray-100 via-[#fa34a1]/[.2] to-gray-100">
             <Container>
-                
-                <div
-                 className="
-                    grid
-                    grid-cols-1
-                    justify-center
-                    items-center
-                    lg:grid-cols-5
-                    gap-4
-                    w-full
-                    h-full
-                ">
-
-                    {/* LOGO IMAGE */}
-                    <div 
-                     className="
-                        w-full
-                        h-full
-                        flex
-                        items-center
-                        justify-center
-                    ">
-                        <Image
-                            alt='company logo'
-                            src='/logo.jpg'
-                            className='
-                                w-[10rem]
-                                h-[10rem]
-                            '
-                            width={10}
-                            height={10}
-                            sizes='100'
-                        />
-                    </div>
-
-                    {/* USA TEXAS */}
-                    <div 
-                        className="
-                         flex
-                         flex-col
-                         gap-3
-                         justify-center
-                         items-center
-                         lg:justify-normal
-                         lg:items-start
-                    ">
-                        {container1?.map((elem,index) => {
-                            if (elem?.heading) {
-                                return(
-                                    <span 
-                                     key={index}
-                                     className="
-                                        text-lg
-                                        font-bold
-                                        mb-3
-                                    ">
-                                        {elem?.heading}
-                                    </span>
-                                )
-                            }else{
-                                return(
-                                    <div 
-                                        key={index + 23}
-                                        className="
-                                            flex
-                                            flex-col
-                                            gap-2
-                                            justify-center
-                                    ">
-                                        <Link
-                                            href={elem?.href}
-                                            className="
-                                                flex
-                                                flex-row
-                                                gap-2
-                                            "
-                                        >
-                                            {<>
-                                                <elem.icon
-                                                    width={25}
-                                                    height={25}
-                                                    color={iconColors}
-                                                />    
-                                                <span 
-                                                 className="
-                                                   text-xs 
-                                                   text-black
-                                                ">
-                                                    {elem?.placeholder}
-                                                </span>                                        
-                                            </>}
-                                        </Link>
-                                    </div>
-                                )
-                            }
-                           
-                            }
-                        )}
-                    </div>
-
-                    {/* UK */}
-                    <div 
-                        className="
-                        flex
-                         flex-col
-                         gap-3
-                         justify-center
-                         items-center
-                         lg:justify-normal
-                         lg:items-start
-                    ">
-                        {container2?.map((elem,index) => {
-                            if (elem?.heading) {
-                                return(
-                                    <span 
-                                     key={index}
-                                     className="
-                                        text-lg
-                                        font-bold
-                                        mb-3
-                                    ">
-                                        {elem?.heading}
-                                    </span>
-                                )
-                            }else{
-                                return(
-                                    <div 
-                                        key={index + 23}
-                                        className="
-                                            flex
-                                            flex-col
-                                            gap-2
-                                            justify-center
-                                    ">
-                                        <Link
-                                            href={elem?.href}
-                                            className="
-                                                flex
-                                                flex-row
-                                                gap-2
-                                            "
-                                        >
-                                            {<>
-                                                <elem.icon
-                                                    width={25}
-                                                    height={25}
-                                                    color={iconColors}
-                                                />    
-                                                <span 
-                                                 className="
-                                                   text-xs 
-                                                   text-black
-                                                ">
-                                                    {elem?.placeholder}
-                                                </span>                                        
-                                            </>}
-                                        </Link>
-                                    </div>
-                                )
-                            }
-                           
-                            }
-                        )}
-                    </div>
-
-                    {/* INDIA */}
-                    <div 
-                        className="
-                        flex
-                        flex-col
-                        gap-3
-                        justify-center
-                        items-center
-                        lg:justify-normal
-                        lg:items-start
-                    ">
-                        {container3?.map((elem,index) => {
-                            if (elem?.heading) {
-                                return(
-                                    <span 
-                                     key={index}
-                                     className="
-                                        text-lg
-                                        font-bold
-                                        mb-3
-                                    ">
-                                        {elem?.heading}
-                                    </span>
-                                )
-                            }else{
-                                return(
-                                    <div 
-                                        key={index + 23}
-                                        className="
-                                            flex
-                                            flex-col
-                                            gap-2
-                                            justify-center
-                                    ">
-                                        <Link
-                                            href={elem?.href}
-                                            className="
-                                                flex
-                                                flex-row
-                                                gap-2
-                                            "
-                                        >
-                                            {<>
-                                                <elem.icon
-                                                    width={25}
-                                                    height={25}
-                                                    color={iconColors}
-                                                />    
-                                                <span 
-                                                 className="
-                                                   text-xs 
-                                                   text-black
-                                                ">
-                                                    {elem?.placeholder}
-                                                </span>                                        
-                                            </>}
-                                        </Link>
-                                    </div>
-                                )
-                            }
-                           
-                            }
-                        )}
-                    </div>
-
-                    {/* USA CALIFORNIA */}
-                    <div 
-                        className="
-                        flex
-                         flex-col
-                         gap-3
-                         justify-center
-                         items-center
-                         lg:justify-normal
-                         lg:items-start
-                    ">
-                        {container4?.map((elem,index) => {
-                            if (elem?.heading) {
-                                return(
-                                    <span 
-                                     key={index}
-                                     className="
-                                        text-lg
-                                        font-bold
-                                        mb-3
-                                    ">
-                                        {elem?.heading}
-                                    </span>
-                                )
-                            }else{
-                                return(
-                                    <div 
-                                        key={index + 23}
-                                        className="
-                                            flex
-                                            flex-col
-                                            gap-2
-                                            justify-center
-                                    ">
-                                        <Link
-                                            href={elem?.href}
-                                            className="
-                                                flex
-                                                flex-row
-                                                gap-2
-                                            "
-                                        >
-                                            {<>
-                                                <elem.icon
-                                                    width={25}
-                                                    height={25}
-                                                    color={iconColors}
-                                                />    
-                                                <span 
-                                                 className="
-                                                   text-xs 
-                                                   text-black
-                                                ">
-                                                    {elem?.placeholder}
-                                                </span>                                        
-                                            </>}
-                                        </Link>
-                                    </div>
-                                )
-                            }
-                           
-                            }
-                        )}
-                    </div>
-
-
-                   </div>
-            </Container>
-            <MiniFooter/>
-       </footer>
+          <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+              <div>
+              <Image 
+              src="/logo.jpg" 
+              className="mr-5 rounded-full "
+              width={50} 
+              height={60} 
+              alt="logo"
+              />
+                <p className="max-w-xs mt-4 text-sm text-gray-600">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, accusantium.
+                </p>
+                <div className="flex mt-8 space-x-6 text-gray-600">
+                    <SocialIcons/>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-4">
+                <div>
+                  <p className="font-medium">
+                    Company
+                  </p>
+                  <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+                    <Link className="hover:opacity-75" href="/"> About </Link>
+                    <Link className="hover:opacity-75" href="/"> Meet the Team </Link>
+                    <Link className="hover:opacity-75" href="/"> History </Link>
+                    <Link className="hover:opacity-75" href="/"> Careers </Link>
+                  </nav>
+                </div>
+                <div>
+                  <p className="font-medium">
+                    Services
+                  </p>
+                  <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+                    <Link className="hover:opacity-75" href="/"> 1on1 Coaching </Link>
+                    <Link className="hover:opacity-75" href="/"> Company Review </Link>
+                    <Link className="hover:opacity-75" href="/"> Accounts Review </Link>
+                    <Link className="hover:opacity-75" href="/"> HR Consulting </Link>
+                    <Link className="hover:opacity-75" href="/"> SEO Optimisation </Link>
+                  </nav>
+                </div>
+                <div>
+                  <p className="font-medium">
+                    Helpful Links
+                  </p>
+                  <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+                    <Link className="hover:opacity-75" href="/"> Contact </Link>
+                    <Link className="hover:opacity-75" href="/"> FAQs </Link>
+                    <Link className="hover:opacity-75" href="/"> Live Chat </Link>
+                  </nav>
+                </div>
+                <div>
+                  <p className="font-medium">
+                    Legal
+                  </p>
+                  <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+                    <Link className="hover:opacity-75" href="/"> Privacy Policy </Link>
+                    <Link className="hover:opacity-75" href="/"> Terms &amp; Conditions </Link>
+                    <Link className="hover:opacity-75" href="/"> Returns Policy </Link>
+                    <Link className="hover:opacity-75" href="/"> Accessibility </Link>
+                  </nav>
+                </div>
+              </div>
+            </div>
+            <p className="mt-8 text-xs text-gray-800">
+              © 2022 Comany Name
+            </p>
+          </div>
+        </Container>
+        </footer>
     );
 };
 
