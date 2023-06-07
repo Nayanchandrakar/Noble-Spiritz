@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import { ContainerDelay } from "../../utils/Motion.js"
 
-const MotionWrapper = (Component, idnavigate) =>
+const MotionWrapper = (Component) =>
     function HOC() {
         return (
             <motion.section
@@ -10,11 +10,7 @@ const MotionWrapper = (Component, idnavigate) =>
                 whileInView="show"
                 viewport={{ once: true, amount: 0.25 }}
             >
-                <span  
-                id={idnavigate}
-                >
-                    &nbsp;
-                </span>
+               
                 <Component />
             </motion.section>
         )

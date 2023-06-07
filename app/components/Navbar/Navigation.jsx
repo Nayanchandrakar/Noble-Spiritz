@@ -1,20 +1,10 @@
 import {useCallback, useState} from 'react'
 import Link from "next/link"
+import {toogleLinks} from '../../../constants/index.js'
 
 const Navigation = () => {
 
     const [active , setactive] = useState('/')
-
-    const toogleLinks = [
-        {field:'Social-Mission', href:"/"},
-        {field:'Digital Platforms', href:"/Platform"},
-        {field:'About us', href:"/about"},
-        {field:'Ecosystem Partners', href:"/ecosysystem_partners"},
-        {field:'Pricing', href:"/pricing"},
-        {field:"Founder's Dairy", href:"/founders_dairy"},
-        {field:'Careers', href:"/careers"},
-        {field:'Contact Us', href:"/contactus"},
-    ]
 
 
     const handleActiveButton = useCallback((href) => {
@@ -77,4 +67,4 @@ const Navigation = () => {
         </div>
     )
 }
-export default Navigation
+export  default Navigation

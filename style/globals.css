@@ -16,3 +16,15 @@ html{
   .inner-element {
     transform: translateZ(60px);
   }
+
+.fancy_border{
+  animation: infinite ease-in 4s bubbles;
+}
+
+@keyframes bubbles {
+  0%   {border-radius: 30% 70% 70% 30% / 28% 32% 68% 72% ;}
+  25%  {border-radius: 46% 54% 40% 60% / 61% 35% 65% 39% }
+  50%  {border-radius: 50% 50% 40% 60% / 46% 56% 44% 54% }
+  50%  {border-radius: 58% 42% 61% 39% / 45% 48% 52% 55%  }
+  100% {border-radius: 30% 70% 70% 30% / 28% 32% 68% 72% ;}
+}
