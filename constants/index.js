@@ -3,8 +3,8 @@ export  const toogleLinks = [
     {field:'Digital Platforms', href:"/Platform"},
     {field:'About us', href:"/about"},
     {field:'Ecosystem Partners', href:"/ecosysystem_partners"},
-    {field:'Pricing', href:"/pricing"},
-    {field:"Founder's Dairy", href:"/founders_dairy"},
+    {field:'Team', href:"/team/core_team"},
+    {field:"Testimonials", href:"/testimonials"},
     {field:'Careers', href:"/careers"},
-    {field:'Contact Us', href:"/contactus"},
+    {field:'Contact Us', href:"/contact"},
 ]
