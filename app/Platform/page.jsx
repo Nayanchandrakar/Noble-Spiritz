@@ -94,6 +94,9 @@ const Platform = () => {
         { heading:'Disney + clone' , paragraph:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nihil totam deleniti quod, atque vel labore accusantium voluptatem, molestias quae odit repellendus impedit.' , href:'/' },
         { heading:'Hotstar' , paragraph:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nihil totam deleniti quod, atque vel labore accusantium voluptatem, molestias quae odit repellendus impedit.' , href:'/' },
         { heading:'Netflix' , paragraph:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nihil totam deleniti quod, atque vel labore accusantium voluptatem, molestias quae odit repellendus impedit.' , href:'/' },
+        { heading:'Disney + clone' , paragraph:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nihil totam deleniti quod, atque vel labore accusantium voluptatem, molestias quae odit repellendus impedit.' , href:'/' },
+        { heading:'Hotstar' , paragraph:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nihil totam deleniti quod, atque vel labore accusantium voluptatem, molestias quae odit repellendus impedit.' , href:'/' },
+        { heading:'Netflix' , paragraph:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nihil totam deleniti quod, atque vel labore accusantium voluptatem, molestias quae odit repellendus impedit.' , href:'/' },
     ]
 
     return(
@@ -118,9 +121,11 @@ const Platform = () => {
                 <span 
                     className='
                      absolute
-                     text-[4rem]
+                     text-[2.3rem]
                      font-bold
                      text-white
+                     sm:text-5xl
+                     md:text-6xl
                     '
                 >
                     DIGITAL PLATFORMS

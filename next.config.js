@@ -2,7 +2,8 @@
 const nextConfig = {
     images:{
         domains:[
-            'tailwindui.com'
+            'tailwindui.com',
+            'media.geeksforgeeks.org',
         ]
     }
 }

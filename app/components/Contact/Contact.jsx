@@ -52,7 +52,7 @@ const Contact = () => {
           </p>
         </motion.div>
         <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
-          <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 border border-gray-300 p-8 rounded-lg ">
             <div>
               <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
                 First name

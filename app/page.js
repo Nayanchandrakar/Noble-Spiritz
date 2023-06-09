@@ -4,6 +4,7 @@ import Vision from './components/Vision/Vision'
 import PeopleBarrier from './components/Barriers/PeopleBarrier'
 import Approach from './components/Approach/Approach'
 import Contact from './components/Contact/Contact'
+import BlogSwiper from './components/blog/BlogSwiper'
 
 const Home = () => {
     return(
@@ -31,6 +32,7 @@ const Home = () => {
 
         <Vision/>
         <Approach/>
+        <BlogSwiper/>
         <PeopleBarrier/>
         <Contact/>
       </section>
