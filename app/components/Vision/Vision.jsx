@@ -71,7 +71,7 @@ const TiltComponent = ({
                     text-xs
                     text-gray-500
                     text-center
-                    px-2
+                    px-6
                     pt-2
                     ">
                         {para}
@@ -86,13 +86,13 @@ const Vision = () => {
 
 
     const VisionContent = [
-        { heading:'Vision' ,  image: '/Vision/vision.png' , para:'To Empower people with Barriers' },
+        { heading:'Vision' ,  image: '/Vision/vision.png' , para:'Universal education for empowerment and positive change.' },
 
-        { heading:'mission' ,  image: '/Vision/mission.png' , para:'Build self-esteem for people with barriers by coaching life-skills and empowering them to become entrepreneurs.' },
+        { heading:'mission' ,  image: '/Vision/mission.png' , para:'Our mission is to provide free education to all, empowering individuals and fostering positive change.' },
 
-        { heading:'values' ,  image: '/Vision/values.png' , para:'Believe in Self Foster Kinship Grow Together' },
+        { heading:'values' ,  image: '/Vision/values.png' , para:'Accessibility, Inclusivity, Quality, Empowerment, Collaboration, Continuous Improvement, and Ethical Conduct' },
         
-        { heading:'strategy' ,  image: '/Vision/strategy.png' , para:'Promote life skills, Entrepreneurship and Innovation' },
+        { heading:'strategy' ,  image: '/Vision/strategy.png' , para:'Utilizing technology, partnerships, and community engagement to provide free education globally, while staying adaptable and innovative' },
 
     ]
 

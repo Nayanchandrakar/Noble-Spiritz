@@ -1,12 +1,6 @@
-import React from 'react';
 import Container from '../Container';
 import Link from 'next/link';
-import {IoMdCall} from 'react-icons/io'
-import {MdEmail} from 'react-icons/md'
-import {HiLocationMarker} from 'react-icons/hi'
-import {BsClock} from 'react-icons/bs'
 import Image from 'next/image';
-import MiniFooter from './MiniFooter';
 import SocialIcons from '../Navbar/SocialIcons';
 
 
@@ -27,7 +21,11 @@ const Footer = () => {
               alt="logo"
               />
                 <p className="max-w-xs mt-4 text-sm text-gray-600">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, accusantium.
+        A Social mission committed to
+        100% Free Job Skills Training
+        from expert instructors along with
+        100% Free Material.
+        501 (c) (3) non-profit/charity
                 </p>
                 <div className="flex mt-8 space-x-6 text-gray-600">
                     <SocialIcons/>

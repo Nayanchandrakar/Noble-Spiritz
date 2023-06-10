@@ -14,11 +14,20 @@ const Approach = () => {
         <HeadingShortner
             headline={'Our approach.'}
         />
+        {/* <div 
+            className="
+              mt-12
+            ">
+        <HeadingShortner
+            MainHeadline={'Learner'}
+            paragraph={'You can learn anything. Propel your career and enrich your lives.'}
+        />
+        </div> */}
         <div 
         
         className="
          grid
-         mt-12
+         mt-8
          grid-cols-1
          sm:grid-cols-2
          lg:grid-cols-3

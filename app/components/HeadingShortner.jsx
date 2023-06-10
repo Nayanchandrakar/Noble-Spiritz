@@ -5,8 +5,8 @@ import { motion } from "framer-motion"
 const HeadingShortner = ({ MainHeadline, headline, paragraph }) => {
     return (
         <motion.div variants={Slider()}>
-            <div className="flex flex-col gap-3 ">
-                {MainHeadline && <span className="uppercase text-gray-500 font-bold text-base">
+            <div className="flex flex-col gap-2 ">
+                {MainHeadline && <span className="uppercase text-gray-800 font-bold text-lg">
                     {MainHeadline}
                 </span>}
                 {headline && 
@@ -37,7 +37,7 @@ const HeadingShortner = ({ MainHeadline, headline, paragraph }) => {
                     "
                 />    
                 </div>}
-                {paragraph && <p className="text-gray-500 text-lg  w-full lg:max-w-[60%] mt-8">
+                {paragraph && <p className="text-gray-500 text-lg  w-full lg:max-w-[60%] mt-0">
                     {paragraph}
                 </p>}
             </div>

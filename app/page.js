@@ -16,7 +16,7 @@ const Home = () => {
           '
         >
             <Image
-              src="/images/hero_banner.webp"
+              src="/images/banner.jpeg"
               className='
                 w-full
                 object-cover
