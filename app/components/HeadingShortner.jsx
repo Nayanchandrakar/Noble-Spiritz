@@ -6,7 +6,7 @@ const HeadingShortner = ({ MainHeadline, headline, paragraph }) => {
     return (
         <motion.div variants={Slider()}>
             <div className="flex flex-col gap-2 ">
-                {MainHeadline && <span className="uppercase text-gray-800 font-bold text-lg">
+                {MainHeadline && <span className="uppercase text-gray-700 font-bold text-lg">
                     {MainHeadline}
                 </span>}
                 {headline && 

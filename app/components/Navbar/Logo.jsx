@@ -1,11 +1,13 @@
 import Image from 'next/image'
 import {AiOutlineMenu} from 'react-icons/ai'
 import { memo } from 'react'
+import { useRouter } from 'next/navigation'
 
 const Logo = ({
 handleClick
 }) => {
 
+  const router = useRouter()
 console.log('rerender from navbar logo')
 
 
@@ -18,17 +20,28 @@ console.log('rerender from navbar logo')
         gap-2
     '>
       <span 
+       onClick={() => handleClick()}
         className="
           xl:hidden
           block
+          hover:bg-gray-200
+          transition-all
+          duration-400
+          rounded-full
+          cursor-pointer
+          p-2
       ">
         <AiOutlineMenu 
           size={25}
-          onClick={() => handleClick()}
+          color='gray'
       />
       </span>
         <Image
-          className='rounded-full'
+          onClick={() => router.push('/')}
+          className='
+          rounded-full
+          cursor-pointer
+          '
           alt='Logo_image'
           src="/logo.jpg"
           width={45}
