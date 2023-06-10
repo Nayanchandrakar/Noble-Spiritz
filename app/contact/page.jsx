@@ -1,14 +1,16 @@
-import React from "react";
+'use client'
 import Newsletter from "./components/Newsletter";
 import ContactInfos from "./components/ContactInfos";
+import Header from "@app/components/Shared/Header";
 
-export default function Contact() {
+const Contact = () => {
   return (
     <div>
-      {/* contact info */}
+      <Header pageName="Contact" bg_img="https://i.ibb.co/DbMqJ8Z/contact-banner.jpg" />
       <ContactInfos />
-      {/* newsletter - get in touch */}
       <Newsletter />
     </div>
   );
 }
+
+export default Contact

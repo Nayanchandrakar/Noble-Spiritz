@@ -1,5 +1,5 @@
+'use client'
 import Image from "next/image";
-import React from "react";
 import { FaPaperPlane } from "react-icons/fa";
 
 export default function Newsletter() {

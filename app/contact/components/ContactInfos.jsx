@@ -1,9 +1,10 @@
-import React from "react";
+'use client'
 import { AiOutlineMail } from "react-icons/ai";
 import { BsTelephone } from "react-icons/bs";
 import { FiMapPin } from "react-icons/fi";
 
-export default function ContactInfos() {
+const ContactInfos = () => {
+
   // contact infos
   const contactInfos = [
     {
@@ -46,3 +47,5 @@ export default function ContactInfos() {
     </section>
   );
 }
+
+export default ContactInfos

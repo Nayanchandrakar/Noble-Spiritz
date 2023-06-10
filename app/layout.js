@@ -1,9 +1,9 @@
 import '@style/globals.css'
-import { Inter } from 'next/font/google'
+import { Nunito } from 'next/font/google'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 
-const font = Inter({ subsets: ['latin'] })
+const font = Nunito({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Noble Spiritz',

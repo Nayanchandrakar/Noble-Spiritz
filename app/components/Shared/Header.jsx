@@ -1,3 +1,5 @@
+'use client'
+
 import Link from "next/link";
 import { GoPrimitiveDot } from "react-icons/go";
 export default function Header({ pageName, bg_img }) {
