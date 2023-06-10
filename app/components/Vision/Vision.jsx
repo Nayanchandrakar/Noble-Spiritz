@@ -27,6 +27,7 @@ const TiltComponent = ({
                 flex-col 
                 overflow-x-hidden 
                 parallax-effect
+                group
                 ">
                 <div
                     options={{
@@ -41,41 +42,64 @@ const TiltComponent = ({
                     rounded-xl 
                     bg-white/[.2]
                     backdrop-blur-xs
-                    flex 
-                    flex-col 
-                    items-center 
-                    justify-center
-                    border-[2px]
-                    border-black/[.1]
+                     relative
                     ">
                     <Image
                         src={image}
                         className="
-                        w-[7rem] 
-                        bg-transparent
+                            w-full
+                            h-full
+                            rounded-lg 
+                            absolute
+                            inset-0
+                            bg-transparent
                         "
                         alt="no_image"
                         width={40}
                         height={40}
                         sizes="100"
                     />
+                    <div
+                        className="
+                            w-full
+                            h-full
+                            absolute
+                            inset-0
+                            bg-black/[.5]
+                            transition-all
+                            duration-400
+                            group-hover:bg-black/[.7]
+                            rounded-lg
+                        "
+                    />
+                    <div
+                        className="
+                            w-full
+                            h-full
+                            absolute
+                            z-[30]
+                            p-6
+                        "
+                    >
                     <h1 
                     className="
-                    text-base 
+                    text-3xl 
                     bg-transparent
+                    text-white
+                    text-bold
                     ">
                         {heading}
                     </h1>
                     <p 
                     className="
-                    text-xs
-                    text-gray-500
-                    text-center
-                    px-6
-                    pt-2
+                    text-lg
+                    mt-4
+                    text-gray-300
+                    text-start
                     ">
                         {para}
                     </p>
+                    </div>
                 </div>
             </Tilt>
         </motion.div>
@@ -86,13 +110,13 @@ const Vision = () => {
 
 
     const VisionContent = [
-        { heading:'Vision' ,  image: '/Vision/vision.png' , para:'Universal education for empowerment and positive change.' },
+        { heading:'Vision' ,  image: '/vision/vision.png' , para:'Universal education for empowerment and positive change.' },
 
-        { heading:'mission' ,  image: '/Vision/mission.png' , para:'Our mission is to provide free education to all, empowering individuals and fostering positive change.' },
+        { heading:'mission' ,  image: '/vision/mission.png' , para:'Our mission is to provide free education to all, empowering individuals and fostering positive change.' },
 
-        { heading:'values' ,  image: '/Vision/values.png' , para:'Accessibility, Inclusivity, Quality, Empowerment, Collaboration, Continuous Improvement, and Ethical Conduct' },
+        { heading:'values' ,  image: '/vision/values.png' , para:'Accessibility, Inclusivity, Quality, Empowerment, Collaboration, Continuous Improvement, and Ethical Conduct' },
         
-        { heading:'strategy' ,  image: '/Vision/strategy.png' , para:'Utilizing technology, partnerships, and community engagement to provide free education globally, while staying adaptable and innovative' },
+        { heading:'strategy' ,  image: '/vision/strategy.png' , para:'Utilizing technology, partnerships, and community engagement to provide free education globally, while staying adaptable and innovative' },
 
     ]
 
@@ -100,7 +124,7 @@ const Vision = () => {
     return (<>
         <div 
         className="
-         mt-[6rem]
+         my-[6rem]
          relative
         ">
             <Image

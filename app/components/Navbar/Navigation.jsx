@@ -38,7 +38,23 @@ const Navigation = () => {
                             group
                         "
                     >
-                    <Link
+
+
+
+
+                    {elem.field == 'About us' ? (
+                        <>
+                        <div className="dropdown dropdown-hover text-xs">
+                        <label tabIndex={0} >About us</label>
+                        <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                          <li><Link href={'/team/core_team'}>Team</Link></li>
+                          <li><Link href={'/testimonials'}>Testimonials</Link></li>
+                        </ul>
+                        </div>
+                        </>
+                    ) : (
+                        <>
+                        <Link
                         className="
                             text-xs
                             font-medium
@@ -47,6 +63,9 @@ const Navigation = () => {
                     >
                         {elem?.field}
                     </Link>
+                        </>
+                    )}
+                    
                     <span 
                         className={`
                             absolute 

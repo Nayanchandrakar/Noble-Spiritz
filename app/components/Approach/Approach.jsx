@@ -8,7 +8,7 @@ const Approach = () => {
     return(
         <motion.section
             className="
-             my-12
+            my-[6rem]
              overflow-x-hidden
         ">
         <Container>
