@@ -32,8 +32,8 @@ const Home = () => {
 
         <Vision/>
         <Approach/>
-        <BlogSwiper/>
         <PeopleBarrier/>
+        <BlogSwiper/>
         <Contact/>
       </section>
     )
