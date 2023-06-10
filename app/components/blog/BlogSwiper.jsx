@@ -53,7 +53,7 @@ const SliderData = [
                 }
             }}
             autoplay={{
-            delay: 500000,
+            delay: 1500,
             disableOnInteraction: false,
             }}
             pagination={{
