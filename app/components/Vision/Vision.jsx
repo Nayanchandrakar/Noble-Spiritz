@@ -110,13 +110,13 @@ const Vision = () => {
 
 
     const VisionContent = [
-        { heading:'Vision' ,  image: '/vision/vision.png' , para:'Universal education for empowerment and positive change.' },
+        { heading:'Vision' ,  image: '/Vision/vision.png' , para:'Universal education for empowerment and positive change.' },
 
-        { heading:'mission' ,  image: '/vision/mission.png' , para:'Our mission is to provide free education to all, empowering individuals and fostering positive change.' },
+        { heading:'mission' ,  image: '/Vision/mission.png' , para:'Our mission is to provide free education to all, empowering individuals and fostering positive change.' },
 
-        { heading:'values' ,  image: '/vision/values.png' , para:'Accessibility, Inclusivity, Quality, Empowerment, Collaboration, Continuous Improvement, and Ethical Conduct' },
+        { heading:'values' ,  image: '/Vision/values.png' , para:'Accessibility, Inclusivity, Quality, Empowerment, Collaboration, Continuous Improvement, and Ethical Conduct' },
         
-        { heading:'strategy' ,  image: '/vision/strategy.png' , para:'Utilizing technology, partnerships, and community engagement to provide free education globally, while staying adaptable and innovative' },
+        { heading:'strategy' ,  image: '/Vision/strategy.png' , para:'Utilizing technology, partnerships, and community engagement to provide free education globally, while staying adaptable and innovative' },
 
     ]
 
