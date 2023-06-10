@@ -1,8 +1,9 @@
 'use client'
 import {AiOutlineCloseCircle} from 'react-icons/ai'
 import {toogleLinks} from '../../constants/index.js'
-import { useCallback } from 'react'
+import { useCallback , useState} from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link.js'
 
 
 const Minimenu = ({
@@ -10,12 +11,18 @@ const Minimenu = ({
     handleClick
 }) => {
 
+    const [IsOpen , setIsOpen] = useState(false)
     const router = useRouter()
     
     const handleRoute = useCallback((href) => {
         router.push(href),
         handleClick()
     },[handleClick,router]) 
+
+    const handleDropMenu = useCallback(() => {
+        setIsOpen(prev => !prev)
+    },[]) 
+
 
 
     return(
@@ -24,6 +31,7 @@ const Minimenu = ({
               bg-[#f8f5fc]
                 fixed
                 translate
+                xl:hidden
                 inset-0
                 w-[18rem]
                 h-full
@@ -37,8 +45,6 @@ const Minimenu = ({
         <span 
             onClick={() => handleClick()}
             className="
-            sm:hidden
-            block
             cursor-pointer
             p-2
             hover:bg-white
@@ -62,7 +68,35 @@ const Minimenu = ({
         ">
             {toogleLinks?.map((elem,index) => {
                 return(
-                <span 
+                    <>
+                    {elem.field == 'About us' ?  
+                (<>
+                    <div 
+                    onClick={() => handleDropMenu()}
+                    className={`
+                    collapse 
+                    collapse-arrow
+                    bg-[#f0e8fa]
+                    hover:bg-[#e6d3fe]
+                    transition-all
+                    duration-200
+                    rounded-lg
+                    cursor-pointer
+                    ${IsOpen ? 'collapse-open' : 'collapse-close'}
+                    `}>
+                    <input type="radio" name="my-accordion-1" checked="checked" /> 
+                    <div className="collapse-title text-sm
+                     text-gray-600">
+                        About us
+                    </div>
+                    <div className="collapse-content text-sm text-gray-600  "> 
+                         <Link className='mr-4' href={'/team/core_team'}>Teams</Link>
+                        <Link href={'/testimonials'}>Testimonials</Link>
+                    </div>
+                    </div>
+                </>)
+                : (<>
+                    <span 
                     key={`ksdjfas12312df${index}`}
                     className='
                     text-sm
@@ -79,7 +113,10 @@ const Minimenu = ({
                 >
                     {elem?.field}
                 </span>
-                )
+                </>)
+                
+                }
+                </>)
             })}
         </div>
 
