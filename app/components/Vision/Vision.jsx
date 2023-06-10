@@ -116,7 +116,7 @@ const Vision = () => {
 
         { heading:'values' ,  image: '/Vision/values.png' , para:'Accessibility, Inclusivity, Quality, Empowerment, Collaboration, Continuous Improvement, and Ethical Conduct' },
         
-        { heading:'strategy' ,  image: '/Vision/strategy.png' , para:'Utilizing technology, partnerships, and community engagement to provide free education globally, while staying adaptable and innovative' },
+        { heading:'strategy' ,  image: '/Vision/Strategy.png' , para:'Utilizing technology, partnerships, and community engagement to provide free education globally, while staying adaptable and innovative' },
 
     ]
 
