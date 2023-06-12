@@ -1,4 +1,3 @@
-'use client'
 import Header from "@app/components/Shared/Header";
 import Link from "next/link";
 

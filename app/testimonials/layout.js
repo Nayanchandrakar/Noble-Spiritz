@@ -1,4 +1,3 @@
-'use client'
 import Header from "@app/components/Shared/Header"
 
 export const metadata = {
