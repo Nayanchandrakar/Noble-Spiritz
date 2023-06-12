@@ -6,8 +6,8 @@ export default function ContactLayout({ children }) {
     const routes = [
         {
             id: 1,
-            name: "Board Team",
-            route: "/team/core_team"
+            name: "Board Members",
+            route: "/team/board_members"
         },
         {
             id: 2,
@@ -18,11 +18,6 @@ export default function ContactLayout({ children }) {
             id: 3,
             name: "Volunteers",
             route: "/team/volunteers"
-        },
-        {
-            id: 4,
-            name: "Tools & Technologies",
-            route: "/team/tools_technologies"
         },
     ]
     // decide what to render as route

@@ -1,10 +1,9 @@
-'use client'
+"use client";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsTelephone } from "react-icons/bs";
 import { FiMapPin } from "react-icons/fi";
 
 const ContactInfos = () => {
-
   // contact infos
   const contactInfos = [
     {
@@ -29,7 +28,10 @@ const ContactInfos = () => {
 
   //   decide what to render in the ui
   const content = contactInfos?.map((info) => (
-    <div key={info?.id} className="card max-w-sm rounded-lg shadow-xl p-10  ">
+    <div
+      key={info?.id}
+      className="card max-w-sm rounded-lg shadow-xl p-10  bg-base-100"
+    >
       <div className="flex items-center gap-5">
         <info.reactIcon className="text-4xl text-primary" />
         <div>
@@ -46,6 +48,6 @@ const ContactInfos = () => {
       {content}
     </section>
   );
-}
+};
 
-export default ContactInfos
+export default ContactInfos;
