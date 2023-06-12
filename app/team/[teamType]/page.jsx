@@ -10,7 +10,7 @@ export default function TeamPage() {
   const teams = [
     {
       id: 1,
-      type: "core_team",
+      type: "board_members",
       team: [
         {
           id: 1,
@@ -120,7 +120,7 @@ export default function TeamPage() {
     },
     {
       id: 3,
-      type: "content_marketing_team",
+      type: "volunteers",
       team: [
         {
           id: 1,

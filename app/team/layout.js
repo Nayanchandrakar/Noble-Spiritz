@@ -6,7 +6,7 @@ export default function ContactLayout({ children }) {
     const routes = [
         {
             id: 1,
-            name: "Core Team",
+            name: "Board Team",
             route: "/team/core_team"
         },
         {
@@ -16,8 +16,8 @@ export default function ContactLayout({ children }) {
         },
         {
             id: 3,
-            name: "Content Marketing Team",
-            route: "/team/content_marketing_team"
+            name: "Volunteers",
+            route: "/team/volunteers"
         },
         {
             id: 4,

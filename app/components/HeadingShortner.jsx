@@ -1,4 +1,4 @@
-import React from "react"
+'use client'
 import { Slider } from "../../utils/Motion.js"
 import { motion } from "framer-motion"
 

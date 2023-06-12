@@ -1,3 +1,4 @@
+'use client'
 import Tilt from "react-parallax-tilt"
 import { motion } from "framer-motion"
 import { fadeIn  } from "@utils/Motion"

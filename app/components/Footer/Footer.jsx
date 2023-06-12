@@ -1,3 +1,4 @@
+'use client'
 import Container from '../Container';
 import Link from 'next/link';
 import Image from 'next/image';

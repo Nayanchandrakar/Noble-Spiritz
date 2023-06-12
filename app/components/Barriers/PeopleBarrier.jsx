@@ -44,7 +44,6 @@ const PeopleBarrier = () => {
         
       ]
 
-      console.log('rerender issue')
 
       const handleClick = useCallback((name) => {
           setisLong(prev => prev == name ? null : name)

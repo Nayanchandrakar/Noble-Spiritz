@@ -1,8 +1,7 @@
+'use client'
 import Image from "next/image"
 import {AiFillStar} from 'react-icons/ai'
-import {FaRegStarHalfStroke} from 'react-icons/fa'
 import {BsPersonCircle} from 'react-icons/bs'
-import {FaGreaterThan} from 'react-icons/fa'
 import Link from 'next/link'
 
 const Card = () => {

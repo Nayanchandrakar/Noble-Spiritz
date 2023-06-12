@@ -90,7 +90,7 @@ const Minimenu = ({
                         About us
                     </div>
                     <div className="collapse-content text-sm text-gray-600  "> 
-                         <Link className='mr-4' href={'/team/core_team'}>Teams</Link>
+                         <Link className='mr-4' href={'/team/board_members'}>Teams</Link>
                         <Link href={'/testimonials'}>Testimonials</Link>
                     </div>
                     </div>
