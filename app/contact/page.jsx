@@ -1,4 +1,3 @@
-"use client";
 import Newsletter from "./components/Newsletter";
 import ContactInfos from "./components/ContactInfos";
 import Header from "@app/components/Shared/Header";
