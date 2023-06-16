@@ -1,6 +1,6 @@
 'use client'
 import Select from "@app/components/inputs/Select"
-import Input from "@app/components/inputs/input"
+import Input from "@app/components/inputs/Input"
 import Link from "next/link"
 import { useCallback, useState } from "react"
 import { useForm } from "react-hook-form"
