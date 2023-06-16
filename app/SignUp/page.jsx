@@ -25,7 +25,7 @@ const { register, handleSubmit, formState: { errors } } = useForm({
 
 console.log(errors)
 
-const onSubmit = useCallback((data) => {
+const onSubmit = useCallback(async(data) => {
     // setisLoading to true
     setisLoading(prev => !prev)
 
@@ -45,7 +45,7 @@ const onSubmit = useCallback((data) => {
 
     // post axios request
 
-    const results = axios.post('http://localhost:3000/api/register',{
+    const results = await axios.post('http://localhost:3018/api/register',{
       username:data?.name,
       email:data?.email,
       password:data?.password,
