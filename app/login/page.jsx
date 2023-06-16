@@ -2,6 +2,7 @@
 import Select from "@app/components/inputs/Select"
 import Input from "@app/components/inputs/Input"
 import Link from "next/link"
+import axios from 'axios'
 import { useCallback, useState } from "react"
 import { useForm } from "react-hook-form"
 import { toast } from "react-toastify"
@@ -19,18 +20,26 @@ const { register, handleSubmit, formState: { errors } } = useForm({
 
 
 
-const onSubmit = useCallback((data) => {
+const onSubmit = useCallback(async(data) => {
     // setisLoading to true
     setisLoading(prev => !prev)
 
     // giving  error message when fields empty
-    console.log(data)
 
     if(!data){
       toast.error('please fill fields')
       return;
     }
 
+        // post axios request
+
+        const results = await axios.post('http://localhost:3018/api/register',{
+          email:data?.email,
+          password:data?.password,
+      })
+
+      console.log(results)
+      
     // setisLoading to false
     setisLoading(prev => !prev)
 },[])
