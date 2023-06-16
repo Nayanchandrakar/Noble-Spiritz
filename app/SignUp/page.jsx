@@ -24,7 +24,7 @@ const { register, handleSubmit, formState: { errors } } = useForm({
 
 console.log(errors)
 
-const onSubmit = (data) => {
+const onSubmit = useCallback((data) => {
     // setisLoading to true
     setisLoading(prev => !prev)
 
@@ -44,7 +44,7 @@ const onSubmit = (data) => {
 
     // setisLoading to false
     setisLoading(prev => !prev)
-}
+},[])
 
   return(
     <div className="grid grid-cols-1  xl:grid-cols-[69%_29%] w-full h-full mb-32 mt-14 gap-4 overflow-x-hidden ">
@@ -197,11 +197,11 @@ const onSubmit = (data) => {
         disabled={isLoading}
         errors={errors}
         required
-        options={['SRM','OTHERS']}
+        options={['Learners','Trainers']}
         register={register}
       />
 
-      <Select
+      {/* <Select
         id="subscription"
         disabled={isLoading}
         label="Subscriptions"
@@ -209,7 +209,8 @@ const onSubmit = (data) => {
         required
         options={['CRM','SRM',"Enterpreneur"]}
         register={register}
-      />
+      /> */}
+
         <div>
           <button
             disabled={isLoading}
