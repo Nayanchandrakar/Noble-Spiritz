@@ -2,6 +2,7 @@
 import Select from "@app/components/inputs/Select"
 import Input from "@app/components/inputs/Input"
 import Link from "next/link"
+import axios from 'axios'
 import { useCallback, useState } from "react"
 import { useForm } from "react-hook-form"
 import { toast } from "react-toastify"
@@ -17,7 +18,7 @@ const { register, handleSubmit, formState: { errors } } = useForm({
     mobile:'',
     password:'',
     confirm_password:'',
-    user:'SRM',
+    user:'Learner',
     subscription:'CRM',
   }
 })
@@ -41,6 +42,18 @@ const onSubmit = useCallback((data) => {
       toast.error('please fill fields')
       return;
     }
+
+    // post axios request
+
+    const results = axios.post('http://localhost:3000/api/register',{
+      username:data?.name,
+      email:data?.email,
+      password:data?.password,
+      role_id:data?.user == 'Learners'  ? 1 : 2,
+      status:"active"
+  })
+
+  console.log(results)
 
     // setisLoading to false
     setisLoading(prev => !prev)
@@ -87,7 +100,7 @@ const onSubmit = useCallback((data) => {
               message:'minimum char length 3'
             },
             pattern:{
-              value:/^[a-zA-Z]+$/,
+              // value:/^[a-zA-Z]+$/,
               message:'Enter alphabets only'
             },
         }}
@@ -110,7 +123,7 @@ const onSubmit = useCallback((data) => {
             message:'min char length 10'
           },
           pattern:{
-            value:/^\S+@\S+$/i,
+            // value:/^\S+@\S+$/i,
             message:'This is not a valid Email'
           },
       }}
@@ -136,7 +149,7 @@ const onSubmit = useCallback((data) => {
             message:'min char length 10'
           },
           pattern:{
-            value:/^\+91[7-9]\d{9}$/,
+            // value:/^\+91[7-9]\d{9}$/,
             message:'Enter a valid mobile no. +91'
           },
       }}
@@ -161,7 +174,7 @@ const onSubmit = useCallback((data) => {
             message:'min password length 8'
           },
           pattern:{
-            value:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+            // value:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
             message:'Please enter a strong password',
           }
       }}
@@ -186,7 +199,7 @@ const onSubmit = useCallback((data) => {
             message:'min password length 8'
           },
           pattern:{
-            value:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+            // value:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
             message:'Please enter a strong password',
           }
       }}
