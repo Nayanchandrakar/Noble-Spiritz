@@ -1,77 +1,135 @@
 'use client'
+import Select from "@app/components/inputs/Select"
+import Input from "@app/components/inputs/input"
 import Link from "next/link"
-import Image from 'next/image'
-import HeadingShortner from "@app/components/HeadingShortner"
+import { useCallback, useState } from "react"
+import { useForm } from "react-hook-form"
+import { toast } from "react-toastify"
+
 
 const Login = () => {
+const [isLoading , setisLoading] = useState(false)
+
+const { register, handleSubmit, formState: { errors } } = useForm({
+  defaultValues:{
+    email:'',
+    password:'',
+  }
+})
+
+
+
+const onSubmit = useCallback((data) => {
+    // setisLoading to true
+    setisLoading(prev => !prev)
+
+    // giving  error message when fields empty
+    console.log(data)
+
+    if(!data){
+      toast.error('please fill fields')
+      return;
+    }
+
+    // setisLoading to false
+    setisLoading(prev => !prev)
+},[])
 
   return(
-    <div className="flex min-h-full flex-1  flex-col justify-center px-6 py-12 lg:px-8">
-    <div className="sm:mx-auto sm:w-full  sm:max-w-sm flex justify-center">
-     <HeadingShortner
-        headline={'Login to your account'}
-     />
-    </div>
+    <div className="grid grid-cols-1  xl:grid-cols-[69%_29%] w-full h-full mb-32 mt-14 gap-4 overflow-x-hidden ">
 
-    <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form className="space-y-6" action="#" method="POST">
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-            Email address
-          </label>
-          <div className="mt-2">
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              required
-              className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
-            />
-          </div>
+        {/* blue background */}
+        <div className="w-full h-full hidden lg:inline-block  max-w-[2520px] ml-auto bg-blue-500 rounded-r-2xl ">
         </div>
 
-        <div>
-          <div className="flex items-center justify-between">
-            <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-              Password
-            </label>
-            <div className="text-sm">
-              <Link href="/" className="font-semibold text-gray-500 transition-all hover:text-gray-800">
-                Forgot password?
-              </Link>
-            </div>
-          </div>
-          <div className="mt-2">
-            <input
-              id="password"
-              name="password"
-              type="password"
-              autoComplete="current-password"
-              required
-              className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
-            />
-          </div>
+
+        {/* form field starts from here */}
+        <div className="flex  flex-col justify-center px-6 py-12 lg:px-8 border-[2px] border-gray-300 rounded-2xl mx-6 lg:mx-12 xl:mx-0">
+          <div className=" flex flex-col justify-center w-full ">
+
+
+        {/* heading field starts */}
+        <div className="mb-8 sm:mb-[8%] md:mb-[12%] flex flex-row justify-center text-center ">
+            <h4 className="text-2xl text-semibold  text-black">
+            Login or SignIn
+            </h4>
         </div>
+
+        {/* form field starts */}
+      <form className="space-y-6 " onSubmit={handleSubmit(onSubmit)} >
+      
+      <Input
+        id="email"
+        label="Email"
+        disabled={isLoading}
+        register={register}  
+        errors={errors}
+        validation={{
+          required : 'Email is required',
+          maxLength:{
+            value:35,
+            message:'max char length 35'
+          },
+          minLength:{
+            value:10,
+            message:'min char length 10'
+          },
+          pattern:{
+            value:/^\S+@\S+$/i,
+            message:'This is not a valid Email'
+          },
+      }}
+        errorName={errors?.email}
+      />
+
+
+      <Input
+        id="password"
+        label="Password"
+        type="password"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        errorName={errors?.password}
+        validation={{
+          required : 'password is required',
+          maxLength:{
+            value:10,
+            message:'max char length 10'
+          },
+          minLength:{
+            value:8,
+            message:'min password length 8'
+          },
+          pattern:{
+            value:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+            message:'Please enter a strong password',
+          }
+      }}
+      />
+
 
         <div>
           <button
-            type="submit"
-            className="flex w-full justify-center rounded-md bg-rose-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-rose-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600"
+            disabled={isLoading}
+            className={`flex w-full cursor-pointer justify-center rounded-md bg-rose-600 px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-rose-500 focus-visible:outline focus-visible:outline-2 
+            transition-all focus-visible:outline-offset-2 focus-visible:outline-rose-600 ${isLoading && 'cursor-not-allowed'}`}
           >
-            Sign in
+            Login Now
           </button>
         </div>
       </form>
 
-      <p className="mt-10 text-center text-sm text-gray-500">
+      <p className="mt-6 text-center text-sm text-gray-500">
         Not have an account &nbsp;
-        <Link href="/SignUp" className="font-semibold leading-6 text-rose-600 hover:text-rose-500">
-          Register Now
+        <Link href="/SignUp" className={`font-semibold leading-6 cursor-pointer text-rose-600 hover:text-rose-500 ${isLoading && 'cursor-not-allowed'}`}>
+          SignUp Now
         </Link>
       </p>
     </div>
   </div>
+
+    </div>
   )
 }
 

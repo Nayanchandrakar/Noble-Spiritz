@@ -2,7 +2,7 @@
 import { Slider } from "../../utils/Motion.js"
 import { motion } from "framer-motion"
 
-const HeadingShortner = ({ MainHeadline, headline, paragraph }) => {
+const HeadingShortner = ({ MainHeadline, headline, paragraph , color }) => {
     return (
         <motion.div variants={Slider()}>
             <div className="flex flex-col gap-2 ">
@@ -23,18 +23,18 @@ const HeadingShortner = ({ MainHeadline, headline, paragraph }) => {
                     {headline}
                 </span>
                 <span
-                    className="
+                    className={`
                         absolute
                         w-[30%]
                         group-hover:w-full
                         transition-all
                         h-[5px]
                         rounded-full
-                        bg-red-500
+                        ${color ? color : 'bg-red-500'}
                         top-[2.7rem]
                         duration-200
                         ease-in-out
-                    "
+                    `}
                 />    
                 </div>}
                 {paragraph && <p className="text-gray-500 text-lg  w-full lg:max-w-[60%] mt-0">
