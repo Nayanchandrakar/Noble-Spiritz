@@ -33,7 +33,7 @@ const onSubmit = useCallback(async(data) => {
 
         // post axios request
 
-        const results = await axios.post('http://localhost:3018/api/register',{
+        const results = await axios.post('http://localhost:3018/api/login',{
           email:data?.email,
           password:data?.password,
       })
@@ -111,7 +111,7 @@ const onSubmit = useCallback(async(data) => {
             message:'min password length 8'
           },
           pattern:{
-            value:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+            // value:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
             message:'Please enter a strong password',
           }
       }}
