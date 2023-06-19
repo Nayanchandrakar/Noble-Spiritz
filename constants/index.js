@@ -4,7 +4,6 @@ export  const toogleLinks = [
     {field:'About us', href:""},
      {field:'Training', href:"/training"},
     {field:'Careers', href:"/careers"},
-    {field:'Contact Us', href:"/contact"},
 ]
 
 

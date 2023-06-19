@@ -13,8 +13,6 @@ const Input = ({
   errorName,
 }) => {
 
-  console.log(errorName)
-
   return (
     <div className="w-full relative flex flex-col gap-2">
       {errorName && errorName?.type && <span className="text-rose-600 text-xs absolute top-[-21px]">
@@ -58,7 +56,7 @@ const Input = ({
         absolute
         -translate-y-3 
         top-5 
-        z-10 
+        z-2
         origin-[0] 
         left-4
         peer-placeholder-shown:scale-100 

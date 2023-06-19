@@ -2,15 +2,48 @@
 import {useCallback, useState} from 'react'
 import Link from "next/link"
 import {toogleLinks} from '../../../constants/index.js'
+import userAuth from '@hooks/useAuth'
+import {Postdata} from '@Api/Post.js'
+import {shallow} from 'zustand/shallow'
+import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
+
 
 const Navigation = () => {
 
     const [active , setactive] = useState('/')
+    const router = useRouter()
+    const { userCredentials , isNotAuthenticated, Emptyuser , isAuth} = userAuth(state => ({
+        userCredentials:state.userCredentials,
+        isNotAuthenticated:state.isNotAuthenticated,
+        Emptyuser:state.Emptyuser,
+        isAuth:state.isAuth
+      }),shallow)
+
+
+    const NotAuthenticated = async() => {
+        const apicall = await Postdata('/api/auth/logout')
+
+        if (apicall?.status === 201 || 200 && apicall?.statusText === 'OK') {
+            toast.success(apicall?.data?.message)
+            isNotAuthenticated()
+            Emptyuser()
+            router.push('/')
+         }else{
+            toast.error('Some Erorr occured')
+         }
+    }
 
 
     const handleActiveButton = useCallback((href) => {
         setactive(href)
     },[])
+
+
+
+
+
+
 
     return(
         <div 
@@ -54,19 +87,9 @@ const Navigation = () => {
                         </div>
                         </>
                     ) : (
-                        <>
-                        <Link
-                        className="
-                            text-xs
-                            font-medium
-                        "
-                        href={elem?.href}
-                    >
-                        {elem?.field}
-                    </Link>
-                        </>
+                        <><Link href={elem?.href} className="text-xs font-medium">{elem?.field}</Link></>
                     )}
-                    
+
                     <span 
                         className={`
                             absolute 

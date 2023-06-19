@@ -1,14 +1,24 @@
 'use client'
-import Select from "@app/components/inputs/Select"
 import Input from "@app/components/inputs/Input"
 import Link from "next/link"
-import axios from 'axios'
 import { useCallback, useState } from "react"
 import { useForm } from "react-hook-form"
 import { toast } from "react-toastify"
+import { Postdata } from "@Api/Post"
+import { useRouter } from "next/navigation"
+import userAuth from '@hooks/useAuth'
+import {shallow} from 'zustand/shallow'
 
 
 const Login = () => {
+
+const router = useRouter()
+
+const { setisAuth , setUser} = userAuth(state => ({
+  setisAuth:state.setisAuth,
+  setUser:state.setUser,
+}),shallow)
+
 const [isLoading , setisLoading] = useState(false)
 
 const { register, handleSubmit, formState: { errors } } = useForm({
@@ -18,30 +28,44 @@ const { register, handleSubmit, formState: { errors } } = useForm({
   }
 })
 
+const Authenticated = (data) => {
+  setisAuth()
+  setUser(data)
+}
 
 
 const onSubmit = useCallback(async(data) => {
     // setisLoading to true
     setisLoading(prev => !prev)
 
-    // giving  error message when fields empty
+        if(!data){
+          toast.error('please fill fields')
+          return;
+        }
 
-    if(!data){
-      toast.error('please fill fields')
-      return;
-    }
+        try {
 
-        // post axios request
+          const apiLoggedData = {
+            email:data?.email,
+            password:data?.password,
+          }
 
-        const results = await axios.post('http://localhost:3018/api/login',{
-          email:data?.email,
-          password:data?.password,
-      })
+          const loggedInData = await Postdata('/api/auth/login',apiLoggedData)
 
-      console.log(results)
-      
-    // setisLoading to false
-    setisLoading(prev => !prev)
+          if (loggedInData?.status === 201 || 200 && loggedInData?.statusText === 'OK') {
+             toast.success('Logged In succefully')
+             Authenticated(loggedInData?.data)
+             setisLoading(prev => !prev)
+             router.push('/') 
+          }else if(loggedInData?.response?.status === 401 || loggedInData?.response?.statusText === 'Unauthorized'){
+             toast.error(loggedInData?.response?.data?.message)
+             setisLoading(prev => !prev)
+          }
+  
+        } catch (error) {
+          toast.error(error?.response)
+          setisLoading(prev => !prev)
+        }
 },[])
 
   return(

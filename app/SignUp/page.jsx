@@ -2,15 +2,36 @@
 import Select from "@app/components/inputs/Select"
 import Input from "@app/components/inputs/Input"
 import Link from "next/link"
-import axios from 'axios'
 import { useCallback, useState } from "react"
+import {shallow} from 'zustand/shallow'
 import { useForm } from "react-hook-form"
 import { toast } from "react-toastify"
+import { Postdata } from "@Api/Post"
+import { useRouter } from "next/navigation"
+import userAuth from '@hooks/useAuth'
+
 
 
 const Login = () => {
+
+// router component
+const router = useRouter()
+
 const [isLoading , setisLoading] = useState(false)
 
+const { setisAuth , setUser} = userAuth(state => ({
+  setisAuth:state.setisAuth,
+  setUser:state.setUser,
+}),shallow)
+
+
+const Authenticated = (data) => {
+  setisAuth()
+  setUser(data)
+}
+
+
+// react hook form
 const { register, handleSubmit, formState: { errors } } = useForm({
   defaultValues:{
     name:'',
@@ -19,18 +40,13 @@ const { register, handleSubmit, formState: { errors } } = useForm({
     password:'',
     confirm_password:'',
     user:'Learner',
-    subscription:'CRM',
   }
 })
 
-console.log(errors)
-
 const onSubmit = useCallback(async(data) => {
+
     // setisLoading to true
     setisLoading(prev => !prev)
-
-    // giving  error message when fields empty
-    console.log(data)
 
     if (data?.password !== data?.confirm_password) {
       toast.error('password not match')
@@ -40,23 +56,38 @@ const onSubmit = useCallback(async(data) => {
 
     if(!data){
       toast.error('please fill fields')
+      setisLoading(prev => !prev)
       return;
     }
 
     // post axios request
 
-    const results = await axios.post('http://localhost:3018/api/register',{
-      username:data?.name,
-      email:data?.email,
-      password:data?.password,
-      role_id:data?.user == 'Learners'  ? 1 : 2,
-      status:"active"
-  })
+      try {
+        const registerdata = {
+          username:data?.name,
+          email:data?.email,
+          password:data?.password,
+          role:data?.user,
+          status:"active"
+        }
 
-  console.log(results)
+        const apidata = await Postdata('/api/auth/register',registerdata)
+          console.log(apidata)
+        if (apidata?.status === 201 || 200 && apidata?.statusText === 'Created') {
+           toast.success('User registered succefully')
+           Authenticated({currentUser:null})
+           setisLoading(prev => !prev)
+           router.push('/')
+        }else if(apidata?.response?.status === 409 || apidata?.response?.statusText === 'Unauthorized'){
+          toast.error(apidata?.response?.data?.message)
+          setisLoading(prev => !prev)
+       }
+        
+      } catch (error) {
+        console.log(error)
+        setisLoading(prev => !prev)
+      }
 
-    // setisLoading to false
-    setisLoading(prev => !prev)
 },[])
 
   return(
@@ -210,7 +241,7 @@ const onSubmit = useCallback(async(data) => {
         disabled={isLoading}
         errors={errors}
         required
-        options={['Learners','Trainers']}
+        options={['learner','trainer']}
         register={register}
       />
 
