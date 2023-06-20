@@ -40,6 +40,7 @@ const onSubmit = useCallback(async(data) => {
 
         if(!data){
           toast.error('please fill fields')
+          setisLoading(prev => !prev)
           return;
         }
 
@@ -52,16 +53,14 @@ const onSubmit = useCallback(async(data) => {
 
           const loggedInData = await Postdata('/api/auth/login',apiLoggedData)
 
-          console.log(loggedInData)
-
           if (loggedInData?.status === 201 || 200 && loggedInData?.statusText === 'OK') {
              toast.success('Logged In succefully')
              Authenticated(loggedInData?.data)
              setisLoading(prev => !prev)
              router.push('/') 
           }else if(loggedInData?.response?.status === 401 || loggedInData?.response?.statusText === 'Unauthorized'){
+            setisLoading(false)
              toast.error(loggedInData?.response?.data?.message)
-             setisLoading(prev => !prev)
           }
   
         } catch (error) {
@@ -137,8 +136,8 @@ const onSubmit = useCallback(async(data) => {
             message:'min password length 8'
           },
           pattern:{
-            // value:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-            message:'Please enter a strong password',
+            value:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+            message:'Password Should contain special symbols',
           }
       }}
       />

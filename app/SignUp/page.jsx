@@ -3,12 +3,10 @@ import Select from "@app/components/inputs/Select"
 import Input from "@app/components/inputs/Input"
 import Link from "next/link"
 import { useCallback, useState } from "react"
-import {shallow} from 'zustand/shallow'
 import { useForm } from "react-hook-form"
 import { toast } from "react-toastify"
 import { Postdata } from "@Api/Post"
 import { useRouter } from "next/navigation"
-import userAuth from '@hooks/useAuth'
 
 
 
@@ -19,17 +17,6 @@ const router = useRouter()
 
 const [isLoading , setisLoading] = useState(false)
 
-const { setisAuth , setUser} = userAuth(state => ({
-  setisAuth:state.setisAuth,
-  setUser:state.setUser,
-}),shallow)
-
-
-const Authenticated = (data) => {
-  setisAuth()
-  setUser(data)
-}
-
 
 // react hook form
 const { register, handleSubmit, formState: { errors } } = useForm({
@@ -39,7 +26,7 @@ const { register, handleSubmit, formState: { errors } } = useForm({
     mobile:'',
     password:'',
     confirm_password:'',
-    user:'Learner',
+    user:'learner',
   }
 })
 
@@ -72,22 +59,20 @@ const onSubmit = useCallback(async(data) => {
         }
 
         const apidata = await Postdata('/api/auth/register',registerdata)
-          console.log(apidata)
+         
         if (apidata?.status === 201 || 200 && apidata?.statusText === 'Created') {
            toast.success('User registered succefully')
-           Authenticated({currentUser:null})
            setisLoading(prev => !prev)
-           router.push('/')
+           router.push('/login')
         }else if(apidata?.response?.status === 409 || apidata?.response?.statusText === 'Unauthorized'){
+          setisLoading(false)
           toast.error(apidata?.response?.data?.message)
-          setisLoading(prev => !prev)
        }
         
       } catch (error) {
         console.log(error)
         setisLoading(prev => !prev)
       }
-
 },[])
 
   return(
@@ -115,7 +100,7 @@ const onSubmit = useCallback(async(data) => {
 
       <Input
         id="name"
-        label="Name"
+        label="User name"
         disabled={isLoading}
         register={register}  
         errors={errors}
@@ -124,15 +109,15 @@ const onSubmit = useCallback(async(data) => {
             required : 'name is required',
             maxLength:{
               value:20,
-              message:'max char length 20'
+              message:'max char length 25'
             },
             minLength:{
               value:3,
               message:'minimum char length 3'
             },
             pattern:{
-              // value:/^[a-zA-Z]+$/,
-              message:'Enter alphabets only'
+              value:/^[A-Za-z\s]+$/,
+              message:'Full name can only contain letters and spaces'
             },
         }}
       />
@@ -147,14 +132,14 @@ const onSubmit = useCallback(async(data) => {
           required : 'Email is required',
           maxLength:{
             value:35,
-            message:'max char length 35'
+            message:'max char length 40'
           },
           minLength:{
             value:10,
             message:'min char length 10'
           },
           pattern:{
-            // value:/^\S+@\S+$/i,
+            value:/^\S+@\S+$/i,
             message:'This is not a valid Email'
           },
       }}
@@ -170,7 +155,7 @@ const onSubmit = useCallback(async(data) => {
         errors={errors}
         errorName={errors?.mobile}
         validation={{
-          required : 'mobile no. is required',
+          required : 'Mobile no. is required',
           maxLength:{
             value:10,
             message:'max char length 10'
@@ -180,8 +165,8 @@ const onSubmit = useCallback(async(data) => {
             message:'min char length 10'
           },
           pattern:{
-            // value:/^\+91[7-9]\d{9}$/,
-            message:'Enter a valid mobile no. +91'
+            value:/^[6-9]\d{9}$/,
+            message:'Enter a valid Indian mobile no.'
           },
       }}
       />
@@ -195,7 +180,7 @@ const onSubmit = useCallback(async(data) => {
         errors={errors}
         errorName={errors?.password}
         validation={{
-          required : 'password is required',
+          required : 'Password is required',
           maxLength:{
             value:10,
             message:'max char length 10'
@@ -205,8 +190,8 @@ const onSubmit = useCallback(async(data) => {
             message:'min password length 8'
           },
           pattern:{
-            // value:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-            message:'Please enter a strong password',
+            value:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+            message:'Password Should contain special symbols',
           }
       }}
       />
@@ -220,7 +205,7 @@ const onSubmit = useCallback(async(data) => {
         errors={errors}
         errorName={errors?.confirm_password}
         validation={{
-          required : 'password is required',
+          required : 'Password is required',
           maxLength:{
             value:10,
             message:'max char length 10'
@@ -230,8 +215,8 @@ const onSubmit = useCallback(async(data) => {
             message:'min password length 8'
           },
           pattern:{
-            // value:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-            message:'Please enter a strong password',
+            value:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+            message:'Password Should contain special symbols',
           }
       }}
       />
@@ -259,7 +244,7 @@ const onSubmit = useCallback(async(data) => {
           <button
             disabled={isLoading}
             className={`flex w-full cursor-pointer justify-center rounded-md bg-rose-600 px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-rose-500 focus-visible:outline focus-visible:outline-2 
-            transition-all focus-visible:outline-offset-2 focus-visible:outline-rose-600 ${isLoading && 'cursor-not-allowed'}`}
+            transition-all focus-visible:outline-offset-2 focus-visible:outline-rose-600 ${isLoading ? 'cursor-not-allowed' : null}`}
           >
             Register Now
           </button>
@@ -268,7 +253,7 @@ const onSubmit = useCallback(async(data) => {
 
       <p className="mt-6 text-center text-sm text-gray-500">
         Already have an account &nbsp;
-        <Link href="/login" className={`font-semibold leading-6 cursor-pointer text-rose-600 hover:text-rose-500 ${isLoading && 'cursor-not-allowed'}`}>
+        <Link href="/login" className={`font-semibold leading-6 cursor-pointer text-rose-600 hover:text-rose-500 ${isLoading ? 'cursor-not-allowed' : null}`}>
           Login Now
         </Link>
       </p>

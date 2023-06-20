@@ -5,9 +5,10 @@ import Logo from "./Logo"
 import Navigation from "./Navigation"
 import SocialIcons from "./SocialIcons"
 import Minimenu from '../Minimenu'
+import IsAuth from '../IsAuth/IsAuth'
+
 
 const Navbar = () => {
-
 // useState hook
 const [isOpen , setOpen] = useState(false)
 
@@ -15,7 +16,6 @@ const handleClick = useCallback(() => {
     setOpen(prev => !prev)  
 },[])
 
-console.log('rerender from navbar')
 
     return(
         <header
@@ -43,7 +43,17 @@ console.log('rerender from navbar')
                             handleClick={handleClick}
                         />
                         <Navigation/>
-                        <SocialIcons  />
+
+                        <div 
+                        className="
+                            flex
+                            flex-col
+                            gap-2
+                        ">
+                        <IsAuth/>
+                        <SocialIcons />
+                        </div>
+
                         <Minimenu 
                            isOpen={isOpen} 
                            handleClick={handleClick} 

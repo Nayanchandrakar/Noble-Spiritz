@@ -59,13 +59,13 @@ const SocialIcons = ({
                             rounded-full
                             w-fit
                             h-fit
-                            p-1
+                            p-[3px]
                             cursor-pointer
                           ${e?.background}
                         `}>
                      <e.icon
-                        width={20}
-                        height={20}
+                        width={10}
+                        height={10}
                         color={e?.background == null ? 'gray' : 'white'}
                     />
                     </Link>

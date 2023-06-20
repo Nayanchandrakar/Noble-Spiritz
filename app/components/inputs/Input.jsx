@@ -13,6 +13,7 @@ const Input = ({
   errorName,
 }) => {
 
+
   return (
     <div className="w-full relative flex flex-col gap-2">
       {errorName && errorName?.type && <span className="text-rose-600 text-xs absolute top-[-21px]">

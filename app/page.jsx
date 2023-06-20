@@ -1,4 +1,5 @@
 'use client'
+import { useEffect,useCallback } from 'react'
 import Image from 'next/image'
 import Vision from './components/Vision/Vision'
 import PeopleBarrier from './components/Barriers/PeopleBarrier'
@@ -7,11 +8,48 @@ import Contact from './components/Contact/Contact'
 import BlogSwiper from './components/blog/BlogSwiper'
 import { useRouter } from 'next/navigation'
 import Container from './components/Container'
+import { GetData } from '@Api/Get'
+import {shallow} from 'zustand/shallow'
+import userAuth from '@hooks/useAuth'
+import {toast} from 'react-toastify'
+
 
 const Home = () => {
 
 const router = useRouter()
 
+
+const { setisAuth , setUser } = userAuth(state => ({
+    setisAuth:state.setisAuth,
+    setUser:state.setUser,
+  }),shallow)
+
+
+const Fetchuser = useCallback(async (token) => {
+  try {
+    const user = await GetData('/api/auth/current-user', token);
+
+  if (user?.status === 200 || 201 && user?.statusText === 'OK' && user?.data?.success) {
+    setisAuth()
+    setUser(user?.data)
+  } else {
+    toast.error('No user Found')
+  }
+
+  } catch (error) {
+    toast.error('server error')
+    console.log(error)
+  }
+  
+}, [])
+  
+  useEffect(() => {
+    // console.log(token)
+    // Fetchuser(token);
+    Fetchuser();
+  }, []);
+  
+ 
 
     return(
       <section>
@@ -140,3 +178,13 @@ const router = useRouter()
     )
 }
 export default Home
+
+
+// export const getServerSideProps = async () => {
+
+//   const cookieStore = cookies()
+//   const token = cookieStore.get('token')
+//   console.log(token)
+//   return { props: { token } }
+// }
+ 
