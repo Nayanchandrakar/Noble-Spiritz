@@ -9,11 +9,11 @@ const Training = () => {
 
 
     const featuredCourses = [
-        {imagesrc:'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230305182658/HTML-tutorial.jpg' , heading:'Completer html course' , RedirectUrl:'/courses/react=23123&34$' , paraInfo:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores saepe quam veritatis nemo vero distinctio. Repellendus cum dignissimos quidem facere.' , rating:5},
-        {imagesrc:'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230305182658/HTML-tutorial.jpg' , heading:'Completer html course' , RedirectUrl:'/courses/react=23123&34$' , paraInfo:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores saepe quam veritatis nemo vero distinctio. Repellendus cum dignissimos quidem facere.' , rating:5},
-        {imagesrc:'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230305182658/HTML-tutorial.jpg' , heading:'Completer html course' , RedirectUrl:'/courses/react=23123&34$' , paraInfo:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores saepe quam veritatis nemo vero distinctio. Repellendus cum dignissimos quidem facere.' , rating:5},
-        {imagesrc:'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230305182658/HTML-tutorial.jpg' , heading:'Completer html course' , RedirectUrl:'/courses/react=23123&34$' , paraInfo:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores saepe quam veritatis nemo vero distinctio. Repellendus cum dignissimos quidem facere.' , rating:5},
-        {imagesrc:'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230305182658/HTML-tutorial.jpg' , heading:'Completer html course' , RedirectUrl:'/courses/react=23123&34$' , paraInfo:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores saepe quam veritatis nemo vero distinctio. Repellendus cum dignissimos quidem facere.' , rating:5},
+        {id:25235,imagesrc:'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230305182658/HTML-tutorial.jpg' , heading:'Completer html course' , RedirectUrl:'/courses/react=23123&34$' , paraInfo:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores saepe quam veritatis nemo vero distinctio. Repellendus cum dignissimos quidem facere.' , rating:5},
+        {id:6563,imagesrc:'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230305182658/HTML-tutorial.jpg' , heading:'Completer html course' , RedirectUrl:'/courses/react=23123&34$' , paraInfo:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores saepe quam veritatis nemo vero distinctio. Repellendus cum dignissimos quidem facere.' , rating:5},
+        {id:7456,imagesrc:'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230305182658/HTML-tutorial.jpg' , heading:'Completer html course' , RedirectUrl:'/courses/react=23123&34$' , paraInfo:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores saepe quam veritatis nemo vero distinctio. Repellendus cum dignissimos quidem facere.' , rating:5},
+        {id:58567,imagesrc:'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230305182658/HTML-tutorial.jpg' , heading:'Completer html course' , RedirectUrl:'/courses/react=23123&34$' , paraInfo:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores saepe quam veritatis nemo vero distinctio. Repellendus cum dignissimos quidem facere.' , rating:5},
+        {id:234634,imagesrc:'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230305182658/HTML-tutorial.jpg' , heading:'Completer html course' , RedirectUrl:'/courses/react=23123&34$' , paraInfo:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores saepe quam veritatis nemo vero distinctio. Repellendus cum dignissimos quidem facere.' , rating:5},
     ]
 
     return(
@@ -50,7 +50,7 @@ const Training = () => {
                             RedirectUrl={elem?.RedirectUrl}
                             paraInfo={elem?.paraInfo}
                             rating={elem?.rating}
-                            key={index+123123}
+                            key={elem?.id}
                         />
                         </>
                     )

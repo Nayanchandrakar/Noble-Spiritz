@@ -9,10 +9,11 @@ const Card = ({
     heading,
     paraInfo,
     RedirectUrl,
+    key,
 }) => {
     return(
         <>
-        <div className="card w-full bg-base-100 shadow-custom-black">
+        <div key={key} className="card w-full bg-base-100 shadow-custom-black">
             <figure>
                 <Image
                  src={imagesrc} 

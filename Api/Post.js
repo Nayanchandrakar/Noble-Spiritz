@@ -1,16 +1,14 @@
 import axios from "axios"
 
-const url = 'http://localhost:3000'
+const url = process.env.NEXT_PUBLIC_SERVER
 
-
-console.log(url)
 
 export const Postdata = async(
-    endpoint,
-    data,
-) => {
-  
-  const isData = data ? data : null
+  endpoint,
+  data,
+  ) => {
+
+    const isData = data ? data : null
 
   try {
     const apidata = await axios.post(url+endpoint, isData ,{

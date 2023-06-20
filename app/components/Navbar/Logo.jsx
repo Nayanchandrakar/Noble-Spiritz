@@ -9,7 +9,6 @@ handleClick
 }) => {
 
   const router = useRouter()
-console.log('rerender from navbar logo')
 
 
     return(

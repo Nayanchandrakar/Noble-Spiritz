@@ -72,6 +72,7 @@ const Minimenu = ({
                     {elem.field == 'About us' ?  
                 (<>
                     <div 
+                    key={index+1312312}
                     onClick={() => handleDropMenu()}
                     className={`
                     collapse 
@@ -97,7 +98,7 @@ const Minimenu = ({
                 </>)
                 : (<>
                     <span 
-                    key={`ksdjfas12312df${index}`}
+                    key={index+34324}
                     className='
                     text-sm
                     text-gray-600

@@ -8,12 +8,12 @@ import {AiOutlineSearch} from 'react-icons/ai'
 import Link from 'next/link'
 
 const socialIcons = [
-    { background:'bg-blue-800',icon:FaFacebookF, href:'https://www.facebook.com/profile.php?id=100083581801796&notif_id=1686140081196027&notif_t=page_user_activity&ref=notif'},
-    { background:'bg-blue-400',icon:CiTwitter, href:'https://twitter.com/NobleSpiritz'},
-    { background:'bg-blue-600',icon:FaLinkedinIn, href:'https://www.linkedin.com/company/noblespiritz001/?viewAsMember=true'},
-    { background:'bg-orange-500',icon:AiOutlineInstagram, href:'https://www.instagram.com/nobelspiritz001/'},
-    { background:'bg-red-600',icon:AiOutlineYoutube, href:''},
-    { background:null,icon:AiOutlineSearch},
+    {id:534534, background:'bg-blue-800',icon:FaFacebookF, href:'https://www.facebook.com/profile.php?id=100083581801796&notif_id=1686140081196027&notif_t=page_user_activity&ref=notif'},
+    {id:64356, background:'bg-blue-400',icon:CiTwitter, href:'https://twitter.com/NobleSpiritz'},
+    {id:35234534, background:'bg-blue-600',icon:FaLinkedinIn, href:'https://www.linkedin.com/company/noblespiritz001/?viewAsMember=true'},
+    {id:56734, background:'bg-orange-500',icon:AiOutlineInstagram, href:'https://www.instagram.com/nobelspiritz001/'},
+    {id:374623, background:'bg-red-600',icon:AiOutlineYoutube, href:''},
+    {id:5674567, background:null,icon:AiOutlineSearch},
 ]
 
 const SocialIcons = ({
@@ -27,13 +27,13 @@ const SocialIcons = ({
              flex-row
         ">
 
-        {socialIcons?.map((e,index) => {
+        {socialIcons?.map((e) => {
             if (e?.icon == AiOutlineSearch && isSearch) {
                 return(
                     <>
                     <Link
                         href={e?.href || ''} 
-                        key={index}
+                        key={e?.id}
                         className={`
                             rounded-full
                             w-fit
@@ -43,7 +43,6 @@ const SocialIcons = ({
                           ${e?.background}
                         `}>
                      <e.icon
-                        key={index + 34}
                         width={20}
                         height={20}
                         color={e?.background == null ? 'gray' : 'white'}
@@ -55,7 +54,7 @@ const SocialIcons = ({
                     <>
                     <Link 
                         href={e?.href || ''}
-                        key={index}
+                        key={e?.id}
                         className={`
                             rounded-full
                             w-fit
@@ -65,7 +64,6 @@ const SocialIcons = ({
                           ${e?.background}
                         `}>
                      <e.icon
-                        key={index + 34}
                         width={20}
                         height={20}
                         color={e?.background == null ? 'gray' : 'white'}

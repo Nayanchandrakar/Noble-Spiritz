@@ -54,10 +54,11 @@ const Navigation = () => {
                 hidden
                 xl:flex
         ">
-            {toogleLinks?.map((elem,index) => {
+            {toogleLinks?.map((elem) => {
                 return(
                     <>
                     <div 
+                        key={elem?.id}
                         onClick={() => handleActiveButton(elem?.href)}
                         className="
                             relative

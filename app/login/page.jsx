@@ -52,6 +52,8 @@ const onSubmit = useCallback(async(data) => {
 
           const loggedInData = await Postdata('/api/auth/login',apiLoggedData)
 
+          console.log(loggedInData)
+
           if (loggedInData?.status === 201 || 200 && loggedInData?.statusText === 'OK') {
              toast.success('Logged In succefully')
              Authenticated(loggedInData?.data)
