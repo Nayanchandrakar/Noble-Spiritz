@@ -14,9 +14,8 @@ const Login = () => {
 
 const router = useRouter()
 
-const { setisAuth , setUser} = userAuth(state => ({
+const { setisAuth } = userAuth(state => ({
   setisAuth:state.setisAuth,
-  setUser:state.setUser,
 }),shallow)
 
 const [isLoading , setisLoading] = useState(false)
@@ -30,7 +29,6 @@ const { register, handleSubmit, formState: { errors } } = useForm({
 
 const Authenticated = (data) => {
   setisAuth()
-  setUser(data)
 }
 
 

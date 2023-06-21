@@ -2,7 +2,7 @@
 import {create} from 'zustand'
 
 const userAuth = create(set  => ({
-    userCredentials:{}, 
+    userCredentials:null, 
     isAuth:false,
 
     isNotAuthenticated:() => set(state => ({

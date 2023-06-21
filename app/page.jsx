@@ -1,5 +1,5 @@
 'use client'
-import { useEffect,useCallback } from 'react'
+import { useEffect,useCallback, useState } from 'react'
 import Image from 'next/image'
 import Vision from './components/Vision/Vision'
 import PeopleBarrier from './components/Barriers/PeopleBarrier'
@@ -12,42 +12,69 @@ import { GetData } from '@Api/Get'
 import {shallow} from 'zustand/shallow'
 import userAuth from '@hooks/useAuth'
 import {toast} from 'react-toastify'
+import axios from 'axios'
+import { Postdata } from '@Api/Post'
 
 
 const Home = () => {
 
 const router = useRouter()
 
-
-const { setisAuth , setUser } = userAuth(state => ({
+const { setisAuth , setUser , isAuth,userCredentials} = userAuth(state => ({
     setisAuth:state.setisAuth,
     setUser:state.setUser,
+    isAuth:state.isAuth,
+    userCredentials:state.userCredentials,
   }),shallow)
 
+  
 
-const Fetchuser = useCallback(async (token) => {
+
+const getToken = async() => {
+  const data = await axios.get('/api/getcookie')
+  let IsValidToken = (data?.status === 200 || 201 && data?.statusText === 'OK' && data?.data?.value) ? data?.data?.value : false
+  return IsValidToken
+}
+
+
+const Fetchuser = useCallback(async () => {
   try {
-    const user = await GetData('/api/auth/current-user', token);
 
+    const IsCookie = await getToken()
+
+    // Fetching the user from the token
+    const user = await GetData('/api/auth/current-user', IsCookie)
+
+
+    // Checking the valid data is present or not in res
   if (user?.status === 200 || 201 && user?.statusText === 'OK' && user?.data?.success) {
     setisAuth()
     setUser(user?.data)
-  } else {
-    toast.error('No user Found')
+  } else if(user?.response?.status === 401 && user?.response?.statusText === 'Unauthorized' && user?.response?.data?.message === 'Authentication failed'){
+    const deleteCookie = await Postdata('/api/auth/logout')
   }
 
   } catch (error) {
     toast.error('server error')
-    console.log(error)
   }
-  
 }, [])
-  
+
+
+// useEffect hook for fetching the user in first render
+
   useEffect(() => {
-    // console.log(token)
-    // Fetchuser(token);
-    Fetchuser();
-  }, []);
+    // console.log(userCredentials, 'is cREDENTIALS')
+    // console.log(isAuth, 'is Auth')
+
+    // console.log(isAuth && userCredentials === null, 'condition 1')
+    // console.log(!isAuth && userCredentials === null, 'condition 2')
+
+    if(isAuth && userCredentials === null){
+      Fetchuser()
+    }else if(!isAuth && userCredentials === null){
+      Fetchuser()
+    }
+  }, [isAuth]);
   
  
 
