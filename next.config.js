@@ -11,7 +11,8 @@ const nextConfig = {
             "dignityofnoble.org", 
             "rainbowit.net"
         ]
-    }
+    },
+  distDir: 'build',
 }
 
 module.exports = nextConfig
