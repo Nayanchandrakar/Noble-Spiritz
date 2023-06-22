@@ -30,6 +30,7 @@ const { register, handleSubmit, formState: { errors } } = useForm({
 const Authenticated = (data) => {
   setisAuth()
   // can be commented in future
+  console.log(data)
   localStorage.setItem('token',JSON.stringify(data?.token))
 }
 
