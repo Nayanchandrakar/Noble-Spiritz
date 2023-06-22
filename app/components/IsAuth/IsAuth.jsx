@@ -25,7 +25,7 @@ const IsAuth = () => {
         try {
         const apicall = await Postdata('/api/auth/logout')
         
-        if (apicall?.status === 201 || 200 && apicall?.statusText === 'OK') {
+        if (apicall?.status === 201 || 200) {
             toast.success(apicall?.data?.message)
             isNotAuthenticated()
             Emptyuser()
