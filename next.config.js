@@ -12,7 +12,6 @@ const nextConfig = {
             "rainbowit.net"
         ]
     },
-  distDir: 'build',
 }
 
 module.exports = nextConfig
