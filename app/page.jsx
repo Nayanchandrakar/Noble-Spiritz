@@ -30,28 +30,29 @@ const { setisAuth , setUser , isAuth,userCredentials} = userAuth(state => ({
   
 
 
-const getToken = async() => {
-  const data = await axios.get('/api/getcookie')
-  let IsValidToken = (data?.status === 200 || 201 && data?.statusText === 'OK' && data?.data?.value) ? data?.data?.value : false
-  return IsValidToken
-}
+// const getToken = async() => {
+//   const data = await axios.get('/api/getcookie')
+//   let IsValidToken = (data?.status === 200 || 201 && data?.statusText === 'OK' && data?.data?.value) ? data?.data?.value : false
+//   return IsValidToken
+// }
 
 
 const Fetchuser = useCallback(async () => {
   try {
 
-    const IsCookie = await getToken()
-
+    // const IsCookie = await getToken()
+       const IsCookie = JSON.parse(localStorage.getItem('token'))
     // Fetching the user from the token
     const user = await GetData('/api/auth/current-user', IsCookie)
 
 
     // Checking the valid data is present or not in res
-  if (user?.status === 200 || 201 && user?.statusText === 'OK' && user?.data?.success) {
+  if (user?.status === 200 || 201  && user?.data?.success) {
     setisAuth()
     setUser(user?.data)
-  } else if(user?.response?.status === 401 && user?.response?.statusText === 'Unauthorized' && user?.response?.data?.message === 'Authentication failed'){
-    const deleteCookie = await Postdata('/api/auth/logout')
+  } else if(user?.response?.status === 401 && user?.response?.data?.message === 'Authentication failed'){
+    // const deleteCookie = await Postdata('/api/auth/logout')
+    localStorage.clear()
   }
 
   } catch (error) {

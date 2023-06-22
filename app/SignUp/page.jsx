@@ -60,11 +60,11 @@ const onSubmit = useCallback(async(data) => {
 
         const apidata = await Postdata('/api/auth/register',registerdata)
          
-        if (apidata?.status === 201 || 200 && apidata?.statusText === 'Created') {
+        if (apidata?.status === 201 || 200 ) {
            toast.success('User registered succefully')
            setisLoading(prev => !prev)
            router.push('/login')
-        }else if(apidata?.response?.status === 409 || apidata?.response?.statusText === 'Unauthorized'){
+        }else if(apidata?.response?.status === 409 ){
           setisLoading(false)
           toast.error(apidata?.response?.data?.message)
        }

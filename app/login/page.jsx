@@ -29,6 +29,8 @@ const { register, handleSubmit, formState: { errors } } = useForm({
 
 const Authenticated = (data) => {
   setisAuth()
+  // can be commented in future
+  localStorage.setItem('token',JSON.stringify(data?.token))
 }
 
 
@@ -48,15 +50,15 @@ const onSubmit = useCallback(async(data) => {
             email:data?.email,
             password:data?.password,
           }
-
+          //before pull checkout
           const loggedInData = await Postdata('/api/auth/login',apiLoggedData)
 
-          if (loggedInData?.status === 201 || 200 && loggedInData?.statusText === 'OK') {
+          if (loggedInData?.status === 201 || 200) {
              toast.success('Logged In succefully')
              Authenticated(loggedInData?.data)
              setisLoading(prev => !prev)
              router.push('/') 
-          }else if(loggedInData?.response?.status === 401 || loggedInData?.response?.statusText === 'Unauthorized'){
+          }else if(loggedInData?.response?.status === 401 ){
             setisLoading(false)
              toast.error(loggedInData?.response?.data?.message)
           }
