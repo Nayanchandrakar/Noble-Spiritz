@@ -27,6 +27,7 @@ const IsAuth = () => {
         
         if (apicall?.status === 201 || 200) {
             toast.success(apicall?.data?.message)
+            localStorage.clear()
             isNotAuthenticated()
             Emptyuser()
             setisClicked(prev => !prev)
