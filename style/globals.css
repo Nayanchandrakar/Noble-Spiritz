@@ -7,6 +7,9 @@ html{
     scroll-behavior: smooth;
 }
 
+.remove_scrollbar::-webkit-scrollbar{
+  display: none;
+}
 
 .parallax-effect {
     transform-style: preserve-3d;

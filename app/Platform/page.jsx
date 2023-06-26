@@ -8,15 +8,22 @@ import Tilt from 'react-parallax-tilt'
 import MotionWrapper from '@app/Hoc/MotionWrapper'
 import {BsFillStarFill} from 'react-icons/bs'
 import Image from 'next/image'
+import {PlatformContent} from '@constants/platform.js'
 
-const TiltComponent = ({index,heading,paragraph,href}) => {
+const TiltComponent = ({Heading, SubHeading,Content,index}) => {
+
+    let delay = index * 0.5
+
+    console.log(delay)
+
+    // variants={fadeIn("down", "spring", delay, 0.75)}
+
     return(
         <>
-          <motion.div variants={fadeIn("down", "spring", index * 0.5, 0.75)}>
+          <motion.div >
             <Tilt
-                key={`mainkey234${index}`}
                 perspective={500}
-                className="flex justify-center items-center  flex-col overflow-hidden parallax-effect  "
+                className="flex justify-center items-center flex-col overflow-hidden parallax-effect  "
             >
                 <div
                     options={{
@@ -26,39 +33,79 @@ const TiltComponent = ({index,heading,paragraph,href}) => {
                     }}
                     className="w-full
                     rounded-lg
-                    h-fit
                     flex
                     bg-rose-green
                     flex-col
                     gap-2
-                    p-6"
+                    p-6
+                    h-fit
+                    "
                 >
                     
             <span 
               className='
               text-gray-800
-              font-bold
+              font-extrabold
               text-left
               flex
+              items-center
               flex-row
               gap-2
           '>    
-            <BsFillStarFill
-                size={20}
-                color='black'
-            />
-               {heading}
+            <span className="w-fit h-fit bg-white rounded-full p-4">
+                <BsFillStarFill
+                    size={20}
+                    color='black'
+                />
+            </span>
+
+               <span className=''>
+                {Heading}
+                <p 
+                    className="
+                    text-sm
+                        text-gray-500
+                        font-semibold
+                        ">
+                    {SubHeading}
+                </p>
+               </span>
           </span>
-              <p 
-              className="
-                  text-sm
-                  text-gray-600
-                  text-left
-              ">
-                  {paragraph}
-              </p>
+              
+
+
+
+              <div className="overflow-auto h-[15rem] p-2 remove_scrollbar">
+                                 
+                                 {Content && Content?.map(para =>{
+                                     return(
+                                    <div 
+                                        className="
+                                            flex
+                                            flex-col
+                                            gap-0
+                                            py-2
+                                        "
+                                    >
+                                    <span 
+                                        className="
+                                           text-base
+                                           font-bold
+                                           text-black
+
+                                       ">
+                                           {para?.heading}
+                                    </span>
+                                    <p className="text-gray-600 text-base">
+                                    {para?.para  || null}
+                                 </p>
+                                 </div>)
+                                 })}
+                            </div>
+
+
           <Link 
-          href={href}
+          href={'/'}
           className='
               bg-black
               p-2
@@ -79,7 +126,8 @@ const TiltComponent = ({index,heading,paragraph,href}) => {
               size={15}
               color='white'
           />
-              </Link>
+        </Link>
+
                 </div>
             </Tilt>
         </motion.div>
@@ -90,14 +138,7 @@ const TiltComponent = ({index,heading,paragraph,href}) => {
 
 const Platform = () => {
 
-    const platformContent = [
-        { heading:'Disney + clone' , paragraph:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nihil totam deleniti quod, atque vel labore accusantium voluptatem, molestias quae odit repellendus impedit.' , href:'/' },
-        { heading:'Hotstar' , paragraph:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nihil totam deleniti quod, atque vel labore accusantium voluptatem, molestias quae odit repellendus impedit.' , href:'/' },
-        { heading:'Netflix' , paragraph:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nihil totam deleniti quod, atque vel labore accusantium voluptatem, molestias quae odit repellendus impedit.' , href:'/' },
-        { heading:'Disney + clone' , paragraph:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nihil totam deleniti quod, atque vel labore accusantium voluptatem, molestias quae odit repellendus impedit.' , href:'/' },
-        { heading:'Hotstar' , paragraph:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nihil totam deleniti quod, atque vel labore accusantium voluptatem, molestias quae odit repellendus impedit.' , href:'/' },
-        { heading:'Netflix' , paragraph:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nihil totam deleniti quod, atque vel labore accusantium voluptatem, molestias quae odit repellendus impedit.' , href:'/' },
-    ]
+
 
     return(
         <section 
@@ -156,11 +197,11 @@ const Platform = () => {
             gap-14
             my-16
             ">
-                {platformContent?.map((elem,index) => {
+                {PlatformContent?.map((elem,index) => {
                     return(
                         <TiltComponent
                             {...elem}
-                            key={`temp${index}`}
+                            key={elem?.id}
                             index={index}
                         />
                     )
