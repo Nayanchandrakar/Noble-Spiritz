@@ -33,6 +33,26 @@ const Navigation = () => {
                     />
                 )
             })}
+
+            <button 
+                className="
+                    w-fit 
+                    h-fit
+                    px-3
+                    py-1.5
+                    rounded-lg 
+                    text-white
+                    bg-green-500
+                    font-bold
+                    text-center
+                    text-sm
+                    hover:bg-green-600
+                    transition-all
+                    duration-400
+                "
+            >
+                Donate
+            </button>
         </div>
     )
 }
