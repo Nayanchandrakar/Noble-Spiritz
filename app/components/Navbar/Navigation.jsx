@@ -1,41 +1,39 @@
-'use client'
-import {useCallback, useState} from 'react'
-import {toogleLinks} from '../../../constants/index.js'
+"use client"
+import { useCallback, useState } from "react"
+import { toogleLinks } from "../../../constants/index.js"
 
-import Navcontainer from './Navcontainer.jsx'
-
+import Navcontainer from "./Navcontainer.jsx"
+import IsAuth from "../IsAuth/IsAuth.jsx"
 
 const Navigation = () => {
+  const [active, setactive] = useState("/")
 
-    const [active , setactive] = useState('/')
+  const handleActiveButton = useCallback((href) => {
+    setactive(href)
+  }, [])
 
-
-    const handleActiveButton = useCallback((href) => {
-        setactive(href)
-    },[])
-
-
-    return(
-        <div 
-            className="
+  return (
+    <div
+      className="
                 flex-row
                 gap-2
                 items-center
                 hidden
                 xl:flex
-        ">
-            {toogleLinks?.map((elem) => {
-                return(
-                    <Navcontainer
-                        handleActiveButton={handleActiveButton}
-                        elem={elem}
-                        acitve={active}
-                    />
-                )
-            })}
+        "
+    >
+      {toogleLinks?.map((elem) => {
+        return (
+          <Navcontainer
+            handleActiveButton={handleActiveButton}
+            elem={elem}
+            acitve={active}
+          />
+        )
+      })}
 
-            <button 
-                className="
+      <button
+        className="
                     w-fit 
                     h-fit
                     px-3
@@ -50,10 +48,11 @@ const Navigation = () => {
                     transition-all
                     duration-400
                 "
-            >
-                Donate
-            </button>
-        </div>
-    )
+      >
+        Donate
+      </button>
+      <IsAuth />
+    </div>
+  )
 }
-export  default Navigation
+export default Navigation

@@ -1,25 +1,22 @@
-'use client'
-import {useState,useCallback} from 'react'
-import  Container  from "../Container"
+"use client"
+import { useState, useCallback } from "react"
+import Container from "../Container"
 import Logo from "./Logo"
 import Navigation from "./Navigation"
 import SocialIcons from "./SocialIcons"
-import Minimenu from '../Minimenu'
-import IsAuth from '../IsAuth/IsAuth'
-
+import Minimenu from "../Minimenu"
 
 const Navbar = () => {
-// useState hook
-const [isOpen , setOpen] = useState(false)
+  // useState hook
+  const [isOpen, setOpen] = useState(false)
 
-const handleClick = useCallback(() => {
-    setOpen(prev => !prev)  
-},[])
+  const handleClick = useCallback(() => {
+    setOpen((prev) => !prev)
+  }, [])
 
-
-    return(
-        <header
-            className="
+  return (
+    <header
+      className="
                 w-full
                 border-b-[1px]
                 sticky
@@ -28,39 +25,36 @@ const handleClick = useCallback(() => {
                 shadow-lg
                 z-[3]
                 bg-[#f5faff]
-            ">
-                <Container>
-                <nav 
-                    className="
+            "
+    >
+      <Container>
+        <nav
+          className="
                         flex
                         h-[76px]
                         w-full
                         justify-between
                         items-center
                         gap-3
-                ">
-                        <Logo 
-                            handleClick={handleClick}
-                        />
-                        <Navigation/>
+                "
+        >
+          <Logo handleClick={handleClick} />
+          <Navigation />
 
-                        <div 
-                        className="
+          <div
+            className="
                             flex
                             flex-col
                             gap-2
-                        ">
-                        <IsAuth/>
-                        <SocialIcons />
-                        </div>
+                        "
+          >
+            <SocialIcons />
+          </div>
 
-                        <Minimenu 
-                           isOpen={isOpen} 
-                           handleClick={handleClick} 
-                        />
-                </nav>
-                </Container>
-        </header>
-    )
+          <Minimenu isOpen={isOpen} handleClick={handleClick} />
+        </nav>
+      </Container>
+    </header>
+  )
 }
 export default Navbar

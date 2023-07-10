@@ -1,27 +1,18 @@
-'use client'
+"use client"
 import Tilt from "react-parallax-tilt"
 import { motion } from "framer-motion"
-import { fadeIn  } from "@utils/Motion"
-import  MotionWrapper   from "../../Hoc/MotionWrapper"
+import { fadeIn } from "@utils/Motion"
+import MotionWrapper from "../../Hoc/MotionWrapper"
 import Image from "next/image"
 import Container from "../Container"
 
-
-const TiltComponent = ({ 
-    index, 
-    heading, 
-    image,
-    para, 
-}) => {
-    return (
-        <motion.div 
-        variants={fadeIn("right", "spring", index * 0.5, 0.75)}
-        >
-            
-            <Tilt
-                key={`mainkey234${index}`}
-                perspective={500}
-                className="
+const TiltComponent = ({ index, heading, image, para }) => {
+  return (
+    <motion.div variants={fadeIn("right", "spring", index * 0.5, 0.75)}>
+      <Tilt
+        key={`mainkey234${index}`}
+        perspective={500}
+        className="
                 flex 
                 justify-center 
                 items-center  
@@ -29,14 +20,15 @@ const TiltComponent = ({
                 overflow-x-hidden 
                 parallax-effect
                 group
-                ">
-                <div
-                    options={{
-                        max: 45,
-                        scale: 1,
-                        speed: 450,
-                    }}
-                    className="
+                "
+      >
+        <div
+          options={{
+            max: 45,
+            scale: 1,
+            speed: 450,
+          }}
+          className="
                     inner-element 
                     h-[18rem] 
                     w-full 
@@ -44,10 +36,11 @@ const TiltComponent = ({
                     bg-white/[.2]
                     backdrop-blur-xs
                      relative
-                    ">
-                    <Image
-                        src={image}
-                        className="
+                    "
+        >
+          <Image
+            src={image}
+            className="
                             w-full
                             h-full
                             rounded-lg 
@@ -55,13 +48,13 @@ const TiltComponent = ({
                             inset-0
                             bg-transparent
                         "
-                        alt="no_image"
-                        width={40}
-                        height={40}
-                        sizes="100"
-                    />
-                    <div
-                        className="
+            alt="no_image"
+            width={40}
+            height={40}
+            sizes="100"
+          />
+          <div
+            className="
                             w-full
                             h-full
                             absolute
@@ -72,76 +65,92 @@ const TiltComponent = ({
                             group-hover:bg-black/[.7]
                             rounded-lg
                         "
-                    />
-                    <div
-                        className="
+          />
+          <div
+            className="
                             w-full
                             h-full
                             absolute
                             z-[30]
                             p-6
                         "
-                    >
-                    <h1 
-                    className="
+          >
+            <h1
+              className="
                     text-3xl 
                     bg-transparent
                     text-white
                     text-bold
-                    ">
-                        {heading}
-                    </h1>
-                    <p 
-                    className="
+                    "
+            >
+              {heading}
+            </h1>
+            <p
+              className="
                     text-lg
                     mt-4
                     text-gray-300
                     text-start
-                    ">
-                        {para}
-                    </p>
-                    </div>
-                </div>
-            </Tilt>
-        </motion.div>
-    )
+                    "
+            >
+              {para}
+            </p>
+          </div>
+        </div>
+      </Tilt>
+    </motion.div>
+  )
 }
 
 const Vision = () => {
+  const VisionContent = [
+    {
+      heading: "Equity",
+      image: "/Vision/vision.png",
+      para: "Create a world with Diversity, Euqity, Inclusion,Belonging and Justice.",
+    },
 
+    {
+      heading: "mission",
+      image: "/Vision/mission.png",
+      para: "Empower people with barriers as Entrepreneurs.",
+    },
 
-    const VisionContent = [
-        { heading:'Vision' ,  image: '/Vision/vision.png' , para:'Universal education for empowerment and positive change.' },
+    {
+      heading: "values",
+      image: "/Vision/values.png",
+      para: "Belief in Oneness and Growing together",
+    },
 
-        { heading:'mission' ,  image: '/Vision/mission.png' , para:'Our mission is to provide free education to all, empowering individuals and fostering positive change.' },
+    {
+      heading: "strategy",
+      image: "/Vision/Strategy.png",
+      para: "Utilizing technology, partnerships, and community engagement to provide free education globally, while staying adaptable and innovative",
+    },
+  ]
 
-        { heading:'values' ,  image: '/Vision/values.png' , para:'Accessibility, Inclusivity, Quality, Empowerment, Collaboration, Continuous Improvement, and Ethical Conduct' },
-        
-        { heading:'strategy' ,  image: '/Vision/Strategy.png' , para:'Utilizing technology, partnerships, and community engagement to provide free education globally, while staying adaptable and innovative' },
-
-    ]
-
-
-    return (<>
-        <div 
+  return (
+    <>
+      <div
         className="
          my-[6rem]
          relative
-        ">
-            <Image
-                alt="tailwind"
-                src="https://tailwindui.com/img/beams-home@95.jpg"
-                width={20}
-                height={20}
-                sizes='100'
-                className="
+        "
+      >
+        <Image
+          alt="tailwind"
+          src="https://tailwindui.com/img/beams-home@95.jpg"
+          width={20}
+          height={20}
+          sizes="100"
+          className="
                     w-full
                     h-full
                     absolute
                 "
-            />
-            <Container>
-            <div 
+        />
+        <Container>
+          <div
             className="
                 grid 
                 grid-cols-1 
@@ -149,20 +158,18 @@ const Vision = () => {
                 lg:grid-cols-4 
                 mt-[4rem] 
                 gap-6
-            ">
-                {VisionContent?.map((elem, index) => {
-                    return (
-                        <TiltComponent
-                            key={`Newjj-${index}`}
-                            {...elem}
-                            index={index}
-                        />
-                    )
-                })}
-            </div>
-            </Container>
-        </div>
-    </>)
+            "
+          >
+            {VisionContent?.map((elem, index) => {
+              return (
+                <TiltComponent key={`Newjj-${index}`} {...elem} index={index} />
+              )
+            })}
+          </div>
+        </Container>
+      </div>
+    </>
+  )
 }
 
 export default MotionWrapper(Vision, "")
