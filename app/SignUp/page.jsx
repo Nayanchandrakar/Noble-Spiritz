@@ -74,7 +74,7 @@ const Login = () => {
   }, [])
 
   return (
-    <div className="bg-sky-blue grid grid-cols-1  xl:grid-cols-[65%_35%] w-full h-fit max-w-[2520px] mx-auto">
+    <div className="bg-sky-blue flex grid-cols-1  lg:grid-cols-[65%_35%] w-full h-[50rem] max-w-[2520px] mx-auto overflow-hidden justify-center items-center lg:grid lg:justify-normal lg:items-center lg:h-fit ">
       <div className="w-full h-full hidden lg:inline-block">
         {/* <Image
           width={10}
@@ -85,7 +85,7 @@ const Login = () => {
           referrerPolicy="no-referrer"
         /> */}
       </div>
-      <div className="bg-white flex flex-col justify-center items-center w-full h-full p-16">
+      <div className="bg-white flex flex-col justify-center items-center w-[22rem] xs:w-[25rem] lg:w-full h-fit p-8  xl:p-16 rounded-lg lg:rounded-none">
         <span className="text-2xl antialiased font-bold text-[#828899]">
           Create your Acccount!
         </span>

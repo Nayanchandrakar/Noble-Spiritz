@@ -15,6 +15,9 @@ module.exports = {
         secondary: "#00d564",
         base: "#fff",
       },
+      screens: {
+        xs: "450px",
+      },
       boxShadow: {
         "5xl": "0px 3px 15px rgba(0, 0, 0, 0.15)",
         "custom-black": "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
