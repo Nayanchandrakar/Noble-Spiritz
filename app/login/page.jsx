@@ -167,7 +167,7 @@ const Login = () => {
             </button>
 
             <Link
-              href="/signup"
+              href="/SignUp"
               className="text-base uppercase font-semibold text-indigo-400 disabled:cursor-not-allowed text-center antialiased"
             >
               Sign UP

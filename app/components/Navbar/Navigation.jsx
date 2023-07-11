@@ -51,7 +51,6 @@ const Navigation = () => {
       >
         Donate
       </button>
-      <IsAuth />
     </div>
   )
 }

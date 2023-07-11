@@ -105,9 +105,9 @@ const TiltComponent = ({ index, heading, image, para }) => {
 const Vision = () => {
   const VisionContent = [
     {
-      heading: "Equity",
+      heading: "Vision",
       image: "/Vision/vision.png",
-      para: "Create a world with Diversity, Euqity, Inclusion,Belonging and Justice.",
+      para: "Create a world with Diversity, Equity, Inclusion,Belonging and Justice.",
     },
 
     {

@@ -5,6 +5,7 @@ import Logo from "./Logo"
 import Navigation from "./Navigation"
 import SocialIcons from "./SocialIcons"
 import Minimenu from "../Minimenu"
+import IsAuth from "../../components/IsAuth/IsAuth"
 
 const Navbar = () => {
   // useState hook
@@ -44,11 +45,16 @@ const Navbar = () => {
           <div
             className="
                             flex
-                            flex-col
+                            flex-row
+                            items-center
+                            lg:gap-4
                             gap-2
                         "
           >
             <SocialIcons />
+            <span className="xl:inline-block hidden">
+              <IsAuth />
+            </span>
           </div>
 
           <Minimenu isOpen={isOpen} handleClick={handleClick} />
