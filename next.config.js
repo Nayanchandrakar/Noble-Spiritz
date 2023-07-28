@@ -10,6 +10,7 @@ const nextConfig = {
       "www.monsterinsights.com",
       "dignityofnoble.org",
       "rainbowit.net",
+      "mws-uploads.s3.ap-south-1.amazonaws.com",
     ],
   },
 }
